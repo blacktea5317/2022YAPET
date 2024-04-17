@@ -1,0 +1,902 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Hw_MyPetsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="ActivityNo" />
+    </Key>
+    <Property Name="ActivityNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AdmNo" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Deadline" Type="datetime" Nullable="false" />
+    <Property Name="ImageMimeType" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Adm">
+    <Key>
+      <PropertyRef Name="AdmNo" />
+    </Key>
+    <Property Name="AdmNo" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="AdmId" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="AdmPwd" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Adopt">
+    <Key>
+      <PropertyRef Name="AdoptNo" />
+    </Key>
+    <Property Name="AdoptNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SpeciesNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="GenderNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="SizeNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Color" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Age" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="State" Type="bit" />
+    <Property Name="LigationState" Type="bit" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Details" Type="nvarchar(max)" />
+    <Property Name="ChipNumber" Type="varchar" MaxLength="20" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="CityNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ImageMimeType" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Black">
+    <Key>
+      <PropertyRef Name="BlackNo" />
+    </Key>
+    <Property Name="BlackNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="BlackedNo" Type="int" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityNo" />
+    </Key>
+    <Property Name="CityNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Follow">
+    <Key>
+      <PropertyRef Name="FollowNo" />
+    </Key>
+    <Property Name="FollowNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="FollowedNo" Type="int" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FormDetail">
+    <Key>
+      <PropertyRef Name="DetailNo" />
+    </Key>
+    <Property Name="DetailNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+    <Property Name="AdmNo" Type="varchar" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Freeze">
+    <Key>
+      <PropertyRef Name="FreezeNo" />
+    </Key>
+    <Property Name="FreezeNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="StartDays" Type="datetime" Nullable="false" />
+    <Property Name="EndDays" Type="datetime" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="AdmNo" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="From">
+    <Key>
+      <PropertyRef Name="FromNo" />
+    </Key>
+    <Property Name="FromNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ProblemNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Mail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Introduction">
+    <Key>
+      <PropertyRef Name="IntroductionNo" />
+    </Key>
+    <Property Name="IntroductionNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AdmNo" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ImageMimeType" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Knowledge">
+    <Key>
+      <PropertyRef Name="KnowledgeNo" />
+    </Key>
+    <Property Name="KnowledgeNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AdmNo" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="ImageMimeType" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Like">
+    <Key>
+      <PropertyRef Name="LikeNo" />
+    </Key>
+    <Property Name="LikeNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserNo" Type="int" />
+    <Property Name="PostNo" Type="int" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lost">
+    <Key>
+      <PropertyRef Name="LostNo" />
+    </Key>
+    <Property Name="LostNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SpeciesNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="GenderNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="SizeNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Color" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Age" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="Place" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Details" Type="nvarchar(max)" />
+    <Property Name="ChipNumber" Type="varchar" MaxLength="20" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="CityNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ImageMimeType" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MessageNo" />
+    </Key>
+    <Property Name="MessageNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostNo" Type="int" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MsgReport">
+    <Key>
+      <PropertyRef Name="MsgReportNo" />
+    </Key>
+    <Property Name="MsgReportNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageNo" Type="int" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PetGender">
+    <Key>
+      <PropertyRef Name="GenderNo" />
+    </Key>
+    <Property Name="GenderNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PetSize">
+    <Key>
+      <PropertyRef Name="SizeNo" />
+    </Key>
+    <Property Name="SizeNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Size" Type="nvarchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="PhotoNo" />
+    </Key>
+    <Property Name="PhotoNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostNo" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ImageMimeType" Type="nvarchar" MaxLength="20" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="PostNo" />
+    </Key>
+    <Property Name="PostNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="PostTypeNo" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PostState">
+    <Key>
+      <PropertyRef Name="StateNo" />
+    </Key>
+    <Property Name="StateNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PostType">
+    <Key>
+      <PropertyRef Name="PostTypeNo" />
+    </Key>
+    <Property Name="PostTypeNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="PostType" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Problem">
+    <Key>
+      <PropertyRef Name="ProblemNo" />
+    </Key>
+    <Property Name="ProblemNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="ProblemName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="ReportNo" />
+    </Key>
+    <Property Name="ReportNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostNo" Type="int" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResetUserPwd">
+    <Key>
+      <PropertyRef Name="ResetNo" />
+    </Key>
+    <Property Name="ResetNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserNo" Type="int" Nullable="false" />
+    <Property Name="Guid" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Species">
+    <Key>
+      <PropertyRef Name="SpeciesNo" />
+    </Key>
+    <Property Name="SpeciesNo" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="SpeciesName" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserNo" />
+    </Key>
+    <Property Name="UserNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="UserPwd" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="Gender" Type="bit" />
+    <Property Name="EMail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Herder" Type="varbinary(max)" />
+    <Property Name="Telephone" Type="varchar" MaxLength="20" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="State" Type="bit" />
+    <Property Name="Nickname" Type="nvarchar" MaxLength="20" />
+    <Property Name="ImageMimeType" Type="nvarchar" MaxLength="20" />
+    <Property Name="AboutMe" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Activity_Adm">
+    <End Role="Adm" Type="Self.Adm" Multiplicity="1" />
+    <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Adopt" Type="Self.Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="CityNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_PetGender">
+    <End Role="PetGender" Type="Self.PetGender" Multiplicity="1" />
+    <End Role="Adopt" Type="Self.Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetGender">
+        <PropertyRef Name="GenderNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="GenderNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_PetSize">
+    <End Role="PetSize" Type="Self.PetSize" Multiplicity="1" />
+    <End Role="Adopt" Type="Self.Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetSize">
+        <PropertyRef Name="SizeNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="SizeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_Species">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="Adopt" Type="Self.Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="SpeciesNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="SpeciesNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Adopt" Type="Self.Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Black_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Black" Type="Self.Black" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Black">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Black_User1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Black" Type="Self.Black" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Black">
+        <PropertyRef Name="BlackedNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Follow_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Follow" Type="Self.Follow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Follow">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Follow_User1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Follow" Type="Self.Follow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Follow">
+        <PropertyRef Name="FollowedNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDetail_Adm">
+    <End Role="Adm" Type="Self.Adm" Multiplicity="1" />
+    <End Role="FormDetail" Type="Self.FormDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="FormDetail">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDetail_From">
+    <End Role="From" Type="Self.From" Multiplicity="1" />
+    <End Role="FormDetail" Type="Self.FormDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="From">
+        <PropertyRef Name="FromNo" />
+      </Principal>
+      <Dependent Role="FormDetail">
+        <PropertyRef Name="FormNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDetail_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FormDetail" Type="Self.FormDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="FormDetail">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Freeze_Adm">
+    <End Role="Adm" Type="Self.Adm" Multiplicity="1" />
+    <End Role="Freeze" Type="Self.Freeze" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="Freeze">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Freeze_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Freeze" Type="Self.Freeze" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Freeze">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_From_Problem">
+    <End Role="Problem" Type="Self.Problem" Multiplicity="1" />
+    <End Role="From" Type="Self.From" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="ProblemNo" />
+      </Principal>
+      <Dependent Role="From">
+        <PropertyRef Name="ProblemNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Introduction_Adm">
+    <End Role="Adm" Type="Self.Adm" Multiplicity="1" />
+    <End Role="Introduction" Type="Self.Introduction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="Introduction">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Knowledge_Adm">
+    <End Role="Adm" Type="Self.Adm" Multiplicity="1" />
+    <End Role="Knowledge" Type="Self.Knowledge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="Knowledge">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Like_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Like" Type="Self.Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostNo" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="PostNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Like_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Like" Type="Self.Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Lost" Type="Self.Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="CityNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_PetGender">
+    <End Role="PetGender" Type="Self.PetGender" Multiplicity="1" />
+    <End Role="Lost" Type="Self.Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetGender">
+        <PropertyRef Name="GenderNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="GenderNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_PetSize">
+    <End Role="PetSize" Type="Self.PetSize" Multiplicity="1" />
+    <End Role="Lost" Type="Self.Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetSize">
+        <PropertyRef Name="SizeNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="SizeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_Species">
+    <End Role="Species" Type="Self.Species" Multiplicity="1" />
+    <End Role="Lost" Type="Self.Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="SpeciesNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="SpeciesNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Lost" Type="Self.Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostNo" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="PostNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MsgReport_Message">
+    <End Role="Message" Type="Self.Message" Multiplicity="1" />
+    <End Role="MsgReport" Type="Self.MsgReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="MessageNo" />
+      </Principal>
+      <Dependent Role="MsgReport">
+        <PropertyRef Name="MessageNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MsgReport_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="MsgReport" Type="Self.MsgReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="MsgReport">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Photo_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostNo" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="PostNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_PostState">
+    <End Role="PostState" Type="Self.PostState" Multiplicity="1" />
+    <End Role="Post" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostState">
+        <PropertyRef Name="StateNo" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_PostType">
+    <End Role="PostType" Type="Self.PostType" Multiplicity="1" />
+    <End Role="Post" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostType">
+        <PropertyRef Name="PostTypeNo" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="PostTypeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Post" Type="Self.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Report_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostNo" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="PostNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Report_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResetUserPwd_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ResetUserPwd" Type="Self.ResetUserPwd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="ResetUserPwd">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Hw_MyPetsModelStoreContainer">
+    <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Adm" EntityType="Self.Adm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Adopt" EntityType="Self.Adopt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Black" EntityType="Self.Black" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Follow" EntityType="Self.Follow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormDetail" EntityType="Self.FormDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Freeze" EntityType="Self.Freeze" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="From" EntityType="Self.From" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Introduction" EntityType="Self.Introduction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Knowledge" EntityType="Self.Knowledge" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Like" EntityType="Self.Like" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lost" EntityType="Self.Lost" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MsgReport" EntityType="Self.MsgReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PetGender" EntityType="Self.PetGender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PetSize" EntityType="Self.PetSize" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostState" EntityType="Self.PostState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostType" EntityType="Self.PostType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Problem" EntityType="Self.Problem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResetUserPwd" EntityType="Self.ResetUserPwd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Activity_Adm" Association="Self.FK_Activity_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_City" Association="Self.FK_Adopt_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_PetGender" Association="Self.FK_Adopt_PetGender">
+      <End Role="PetGender" EntitySet="PetGender" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_PetSize" Association="Self.FK_Adopt_PetSize">
+      <End Role="PetSize" EntitySet="PetSize" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_Species" Association="Self.FK_Adopt_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_User" Association="Self.FK_Adopt_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Black_User" Association="Self.FK_Black_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Black" EntitySet="Black" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Black_User1" Association="Self.FK_Black_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Black" EntitySet="Black" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Follow_User" Association="Self.FK_Follow_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Follow" EntitySet="Follow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Follow_User1" Association="Self.FK_Follow_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Follow" EntitySet="Follow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDetail_Adm" Association="Self.FK_FormDetail_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="FormDetail" EntitySet="FormDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDetail_From" Association="Self.FK_FormDetail_From">
+      <End Role="From" EntitySet="From" />
+      <End Role="FormDetail" EntitySet="FormDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDetail_User" Association="Self.FK_FormDetail_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FormDetail" EntitySet="FormDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Freeze_Adm" Association="Self.FK_Freeze_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="Freeze" EntitySet="Freeze" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Freeze_User" Association="Self.FK_Freeze_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Freeze" EntitySet="Freeze" />
+    </AssociationSet>
+    <AssociationSet Name="FK_From_Problem" Association="Self.FK_From_Problem">
+      <End Role="Problem" EntitySet="Problem" />
+      <End Role="From" EntitySet="From" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Introduction_Adm" Association="Self.FK_Introduction_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="Introduction" EntitySet="Introduction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Knowledge_Adm" Association="Self.FK_Knowledge_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="Knowledge" EntitySet="Knowledge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Like_Post" Association="Self.FK_Like_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Like" EntitySet="Like" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Like_User" Association="Self.FK_Like_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Like" EntitySet="Like" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_City" Association="Self.FK_Lost_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_PetGender" Association="Self.FK_Lost_PetGender">
+      <End Role="PetGender" EntitySet="PetGender" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_PetSize" Association="Self.FK_Lost_PetSize">
+      <End Role="PetSize" EntitySet="PetSize" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_Species" Association="Self.FK_Lost_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_User" Association="Self.FK_Lost_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Post" Association="Self.FK_Message_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_User" Association="Self.FK_Message_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MsgReport_Message" Association="Self.FK_MsgReport_Message">
+      <End Role="Message" EntitySet="Message" />
+      <End Role="MsgReport" EntitySet="MsgReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MsgReport_User" Association="Self.FK_MsgReport_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="MsgReport" EntitySet="MsgReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Photo_Post" Association="Self.FK_Photo_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Photo" EntitySet="Photo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Post_PostState" Association="Self.FK_Post_PostState">
+      <End Role="PostState" EntitySet="PostState" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Post_PostType" Association="Self.FK_Post_PostType">
+      <End Role="PostType" EntitySet="PostType" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Post_User" Association="Self.FK_Post_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Report_Post" Association="Self.FK_Report_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Report_User" Association="Self.FK_Report_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResetUserPwd_User" Association="Self.FK_ResetUserPwd_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ResetUserPwd" EntitySet="ResetUserPwd" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

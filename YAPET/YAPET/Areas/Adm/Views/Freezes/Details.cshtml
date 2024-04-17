@@ -1,0 +1,72 @@
+﻿@model YAPET.Models.Freeze
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+
+<h2 class="mt-4 mb-4">活動資料</h2>
+
+<div class="card border-info ">
+    <div class="card-header bg-info text-white"><h3>活動詳細資料</h3></div>
+
+    <dl class="card-body row">
+        <dt class="col-3">
+            @*@Html.DisplayNameFor(model => model.User.UserId)*@凍結帳號
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.User.UserId)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.StartDays)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.StartDays)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.EndDays)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.EndDays)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+    
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt class="col-3">
+            @*@Html.DisplayNameFor(model => model.Adm.AdmId)*@管理員帳號
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Adm.AdmId)
+        </dd>
+
+
+
+    </dl>
+</div>
+<div class="card-footer text-right">
+    @*@Html.ActionLink("編輯", "Edit", new { id = Model.UserNo, page = p }, new { @class = "btn btn-success" })*@
+    @Html.ActionLink("回上一頁", "Index", new { id = Model.FreezeNo, page = p }, new { @class = "btn btn-success" })
+    @*@Html.ActionLink("編輯", "Edit", new { id = Model.FreezeNo, page = p }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("刪除", "Delete", new { id = Model.FreezeNo, page = p }, new { @class = "btn btn-danger" })
+</div>*@

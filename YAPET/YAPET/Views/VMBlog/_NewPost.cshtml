@@ -1,0 +1,43 @@
+﻿@model YAPET.Models.VMBlog
+
+
+<div class="row" style="display: flex; flex-wrap: wrap">
+
+    @foreach (var item in Model.posts)
+    {
+        <div class="col-lg-4" style="display:flex;flex-direction:column;">
+            <div class="card">
+                <a href="@Url.Action("UserBlog", "VMBlog", new { id = item.UserNo})" class="fa fa-user-circle mt-1 my-3 ml-3">
+                    @if (@item.User.Nickname != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.User.Nickname)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.User.UserId)
+                    }
+                </a>
+                @{
+                    var photo = Model.photos.Where(p => p.PostNo == item.PostNo).FirstOrDefault();
+                    if (photo != null)
+                    {
+                        <img src="@Url.Action("GetImage","GetImage",new { id=photo.PhotoNo, tableName = "Photo"})" style="width: 100%; height: 350px; object-fit: cover;" />
+                    }
+                    else
+                    {
+                        <img src="~/images/image_4.jpg" style="width: 100%; height: 350px; object-fit: cover;" />
+                    }
+                }
+                <div class="card-body">
+                    <p class="text-warning">@Html.DisplayFor(modelItem => item.PostType.PostType1)</p>
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Content)</p>
+                </div>
+                <div class="card-footer bg-transparent border-0 text-right">
+                    @Html.ActionLink("閱讀更多", "Details", new { id = item.PostNo }, new { @class = "btn btn-outline-primary" })
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

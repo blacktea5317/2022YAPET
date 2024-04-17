@@ -1,0 +1,75 @@
+﻿@model YAPET.Models.Post
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+
+
+
+<h3 class="text-danger mt-4 mb-4">確定要刪除貼文資料?</h3>
+<div class="card border-info">
+    <div class="card-header bg-info text-white"><h3>貼文詳細資料</h3></div>
+
+    <dl class="card-body row">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.PostType.PostType1)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.PostType.PostType1)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.User.UserId)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.User.UserId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card-footer text-right">
+            <input type="submit" value="刪除" class="btn btn-outline-danger btn-lg" />
+            @Html.ActionLink("返回", "Index", new { page = p }, new { @class = "btn btn-outline-success btn-lg" })
+        </div>
+    }
+</div>

@@ -1,0 +1,100 @@
+﻿@model YAPET.Models.PwdChange
+
+@{
+    ViewBag.Title = "變更密碼";
+
+    var key = Request.QueryString["no"];
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <section class="py-5">
+        <div class="container px-3">
+            <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+                <div class="text-center mb-5">
+                    <h1 class="fw-bolder">變更密碼</h1>
+                </div>
+                <div class="col-md-6 offset-md-3">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.NewPwd, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.PasswordFor(model => model.NewPwd, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NewPwd, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.ConfirmPwd, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.PasswordFor(model => model.ConfirmPwd, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPwd, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="text-right">
+                            <input id="btnersetpwd" type="button" data-key="@key" value="變更" class="btn btn-primary px-4 mt-3" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center">
+                @Html.ActionLink("返回登入頁面", "Login")
+            </p>
+        </div>
+    </section>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body" id="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    @Html.ActionLink("立即前往", "Login", "Login", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        var s = 5;
+        function time() {
+            if (s <= 0) {
+                document.location.href = "/Login/Login"
+            }
+            $("#time").html(s)
+            s -= 1
+            setTimeout("time()", 1000);
+        }
+
+        $("#btnersetpwd").on("click", (e) => {
+
+            $.ajax({
+                url: "",
+                method: "Post",
+                data: {
+                    no: $(e.target).data("key"),
+                    NewPwd: $("#NewPwd").val()
+                },
+                success: function (res) {
+                    $("#modal-body").html(`<h1>${res}</h1><br><span id="time">${s}</span>秒後自動前往登入頁`)
+                    $("#exampleModal").modal("show")
+                    if (res == "密碼更改成功！") {
+                        time();
+                    }
+                }
+            });
+        })
+
+    </script>
+}

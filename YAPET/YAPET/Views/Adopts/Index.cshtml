@@ -1,0 +1,143 @@
+﻿@model IEnumerable<YAPET.Models.Adopt>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "一般領養";
+
+    var p = Request.QueryString["page"];
+    var state = Request.QueryString["State"];
+    if (state == null)
+    {
+        state = "";
+    }
+    var speciesNo = Request.QueryString["SpeciesNo"];
+    if (speciesNo == null)
+    {
+        speciesNo = "";
+    }
+    var genderNo = Request.QueryString["GenderNo"];
+    if (genderNo == null)
+    {
+        genderNo = "";
+    }
+    var sizeNo = Request.QueryString["SizeNo"];
+    if (sizeNo == null)
+    {
+        sizeNo = "";
+    }
+    var cityNo = Request.QueryString["CityNo"];
+    if (cityNo == null)
+    {
+        cityNo = "";
+    }
+}
+
+
+
+
+<div class="container my-5">
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+        <div class="text-center">
+            <h1 class="fw-bolder mb-3">一般領養</h1>
+            <p>
+                <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    選擇搜尋範圍
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    @using (Html.BeginForm("Index", "Adopts", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="form-group col-lg-3 col-md-6 row mr-2">
+                                <label class="fa fa-tag col-form-label col-5"> 種類</label>
+                                @Html.DropDownList("SpeciesNo", null, "全部", new { @class = "form-control col-7" })
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-6 row mr-2">
+                                <label class="fa fa-tag col-form-label col-5"> 性別</label>
+                                @Html.DropDownList("GenderNo", null, "全部", new { @class = "form-control col-7" })
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-6 row mr-2">
+                                <label class="fa fa-tag col-form-label col-5"> 體型</label>
+                                @Html.DropDownList("SizeNo", null, "全部", new { @class = "form-control col-7" })
+                            </div>
+
+                            <div class="form-group col-lg-3 col-md-6 row mr-2">
+                                <label class="fa fa-tag col-form-label col-5"> 城市</label>
+                                @Html.DropDownList("CityNo", null, "全部", new { @class = "form-control col-7" })
+                            </div>
+
+                            <div class="form-group form-check col-12">
+                                <input name="State" type="checkbox" class="form-check-input" />
+                                <label class="form-check-label"> 只顯示開放領養</label>
+                            </div>
+
+                            <div class="col-12 mt-1">
+                                <button type="submit" class="fa fa-search btn btn-info px-5"> 搜尋</button>
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink(" 新增送養資料", "Create", new { page = p, state, speciesNo, genderNo, sizeNo, cityNo }, new { @class = "btn btn-outline-primary fa fa-plus" })
+    </p>
+
+    <div class="row " style="display: flex; flex-wrap: wrap">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6" style="display:flex; flex-direction:column;">
+                <div class="card mb-4 h-100">
+                    @if (item.State == true)
+                    {
+                        <span class="fa fa-check btn btn-success">開放領養</span>
+
+                    }
+                    else
+                    {
+                        <span class="fa fa-exclamation btn btn-secondary"> 洽詢中</span>
+                    }
+                    <h2 class="card-title text-center mb-0 mt-2"><strong>@item.Species.SpeciesName</strong></h2>
+
+                    <div class="p-3">
+                        <img src="@Url.Action("GetImage","GetImage",new { id=item.AdoptNo, tableName = "Adopt"})" style="width: 100%; height: 400px; object-fit: cover;" class="img-thumbnail" />
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" value="@item.AdoptNo" />
+                        <h4><strong>名稱：@item.Name</strong></h4>
+                        <h5>性別：@item.PetGender.Gender</h5>
+                        <h5>顏色：@item.Color</h5>
+                        <h5>年紀：@item.Age</h5>
+                        <h5>體型：@item.PetSize.Size</h5>
+                        <h5>城市：@item.City.CityName</h5>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        @Html.ActionLink("詳細資訊", "Details", new { id = item.AdoptNo, page = p, state, speciesNo, genderNo, sizeNo, cityNo }, new { @class = "btn btn-outline-primary btn-block" })
+                        <p class="card-text text-right mt-3">刊登時間：@Html.DisplayFor(modelItem => item.Date, "DateTimeTemplate")</p>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+    <div class="mt-4">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, state, speciesNo, genderNo, sizeNo, cityNo }))
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $('.pagination>li').addClass('page-item');
+        $('.pagination>li>a').addClass('page-link');
+        $('.pagination').addClass('justify-content-center');
+    </script>
+}

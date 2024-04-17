@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{90C37363-72ED-4B95-8191-288CD016590E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YAPET</RootNamespace>
+    <AssemblyName>YAPET</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=107.2.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.107.2.0\lib\netstandard2.0\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="sendGmail">
+      <HintPath>..\..\Users\C50108\Desktop\sendGmail.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
+    <Compile Include="Areas\Adm\Controllers\ActivitiesController.cs" />
+    <Compile Include="Areas\Adm\Controllers\AdmHomeController.cs" />
+    <Compile Include="Areas\Adm\Controllers\AdmLoginCheckController.cs" />
+    <Compile Include="Areas\Adm\Controllers\AdmLoginController.cs" />
+    <Compile Include="Areas\Adm\Controllers\AdoptsController.cs" />
+    <Compile Include="Areas\Adm\Controllers\FormDetailsController.cs" />
+    <Compile Include="Areas\Adm\Controllers\FreezesController.cs" />
+    <Compile Include="Areas\Adm\Controllers\FromsController.cs" />
+    <Compile Include="Areas\Adm\Controllers\IntroductionsController.cs" />
+    <Compile Include="Areas\Adm\Controllers\KnowledgesController.cs" />
+    <Compile Include="Areas\Adm\Controllers\LostsController.cs" />
+    <Compile Include="Areas\Adm\Controllers\MsgReportsController.cs" />
+    <Compile Include="Areas\Adm\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Adm\Controllers\ReportsController.cs" />
+    <Compile Include="Areas\Adm\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Adm\Models\GetNo.cs" />
+    <Compile Include="Areas\Adm\Models\Login.cs" />
+    <Compile Include="Controllers\ActivitiesController.cs" />
+    <Compile Include="Controllers\AdoptDataController.cs" />
+    <Compile Include="Controllers\AdoptsController.cs" />
+    <Compile Include="Controllers\FromsController.cs" />
+    <Compile Include="Controllers\GetImageController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginCheck.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogReporter.cs" />
+    <Compile Include="Controllers\LostsController.cs" />
+    <Compile Include="Controllers\LPetAPIController.cs" />
+    <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VMBlogController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Activity.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Adm.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Adopt.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdoptData.cs" />
+    <Compile Include="Models\Black.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\City.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Follow.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FormDetail.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Freeze.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\From.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Introduction.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Knowledge.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Like.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Lost.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LPetAPI.cs" />
+    <Compile Include="Models\Message.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\GetPwd.cs" />
+    <Compile Include="Models\MsgReport.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PetGender.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PetSize.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Photo.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Post.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PostState.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PostType.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Problem.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PwdForget.cs" />
+    <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\Report.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ResetUserPwd.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Species.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VMBlog.cs" />
+    <Compile Include="Models\YAPET.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YAPET.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YAPET.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YAPET.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YAPET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YAPET.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="css\ajax-loader.gif" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\bootstrap-datepicker.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\bootstrap\bootstrap-grid.css" />
+    <Content Include="css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="css\css\bootstrap-reboot.css" />
+    <Content Include="css\css\mixins\_text-hide.css" />
+    <Content Include="css\flaticon.css" />
+    <Content Include="css\jquery.timepicker.css" />
+    <Content Include="css\magnific-popup.css" />
+    <Content Include="css\owl.carousel.min.css" />
+    <Content Include="css\owl.theme.default.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="examples\background-events.html" />
+    <Content Include="examples\daygrid-views.html" />
+    <Content Include="examples\external-dragging-2cals.html" />
+    <Content Include="examples\external-dragging-builtin.html" />
+    <Content Include="examples\full-height.html" />
+    <Content Include="examples\google-calendar.html" />
+    <Content Include="examples\icalendar.html" />
+    <Content Include="examples\json.html" />
+    <Content Include="examples\js\theme-chooser.js" />
+    <Content Include="examples\lib\locales-all.js" />
+    <Content Include="examples\lib\locales-all.min.js" />
+    <Content Include="examples\lib\locales\af.js" />
+    <Content Include="examples\lib\locales\ar-dz.js" />
+    <Content Include="examples\lib\locales\ar-kw.js" />
+    <Content Include="examples\lib\locales\ar-ly.js" />
+    <Content Include="examples\lib\locales\ar-ma.js" />
+    <Content Include="examples\lib\locales\ar-sa.js" />
+    <Content Include="examples\lib\locales\ar-tn.js" />
+    <Content Include="examples\lib\locales\ar.js" />
+    <Content Include="examples\lib\locales\az.js" />
+    <Content Include="examples\lib\locales\bg.js" />
+    <Content Include="examples\lib\locales\bn.js" />
+    <Content Include="examples\lib\locales\bs.js" />
+    <Content Include="examples\lib\locales\ca.js" />
+    <Content Include="examples\lib\locales\cs.js" />
+    <Content Include="examples\lib\locales\cy.js" />
+    <Content Include="examples\lib\locales\da.js" />
+    <Content Include="examples\lib\locales\de-at.js" />
+    <Content Include="examples\lib\locales\de.js" />
+    <Content Include="examples\lib\locales\el.js" />
+    <Content Include="examples\lib\locales\en-au.js" />
+    <Content Include="examples\lib\locales\en-gb.js" />
+    <Content Include="examples\lib\locales\en-nz.js" />
+    <Content Include="examples\lib\locales\eo.js" />
+    <Content Include="examples\lib\locales\es-us.js" />
+    <Content Include="examples\lib\locales\es.js" />
+    <Content Include="examples\lib\locales\et.js" />
+    <Content Include="examples\lib\locales\eu.js" />
+    <Content Include="examples\lib\locales\fa.js" />
+    <Content Include="examples\lib\locales\fi.js" />
+    <Content Include="examples\lib\locales\fr-ca.js" />
+    <Content Include="examples\lib\locales\fr-ch.js" />
+    <Content Include="examples\lib\locales\fr.js" />
+    <Content Include="examples\lib\locales\gl.js" />
+    <Content Include="examples\lib\locales\he.js" />
+    <Content Include="examples\lib\locales\hi.js" />
+    <Content Include="examples\lib\locales\hr.js" />
+    <Content Include="examples\lib\locales\hu.js" />
+    <Content Include="examples\lib\locales\hy-am.js" />
+    <Content Include="examples\lib\locales\id.js" />
+    <Content Include="examples\lib\locales\is.js" />
+    <Content Include="examples\lib\locales\it.js" />
+    <Content Include="examples\lib\locales\ja.js" />
+    <Content Include="examples\lib\locales\ka.js" />
+    <Content Include="examples\lib\locales\kk.js" />
+    <Content Include="examples\lib\locales\km.js" />
+    <Content Include="examples\lib\locales\ko.js" />
+    <Content Include="examples\lib\locales\ku.js" />
+    <Content Include="examples\lib\locales\lb.js" />
+    <Content Include="examples\lib\locales\lt.js" />
+    <Content Include="examples\lib\locales\lv.js" />
+    <Content Include="examples\lib\locales\mk.js" />
+    <Content Include="examples\lib\locales\ms.js" />
+    <Content Include="examples\lib\locales\nb.js" />
+    <Content Include="examples\lib\locales\ne.js" />
+    <Content Include="examples\lib\locales\nl.js" />
+    <Content Include="examples\lib\locales\nn.js" />
+    <Content Include="examples\lib\locales\pl.js" />
+    <Content Include="examples\lib\locales\pt-br.js" />
+    <Content Include="examples\lib\locales\pt.js" />
+    <Content Include="examples\lib\locales\ro.js" />
+    <Content Include="examples\lib\locales\ru.js" />
+    <Content Include="examples\lib\locales\si-lk.js" />
+    <Content Include="examples\lib\locales\sk.js" />
+    <Content Include="examples\lib\locales\sl.js" />
+    <Content Include="examples\lib\locales\sm.js" />
+    <Content Include="examples\lib\locales\sq.js" />
+    <Content Include="examples\lib\locales\sr-cyrl.js" />
+    <Content Include="examples\lib\locales\sr.js" />
+    <Content Include="examples\lib\locales\sv.js" />
+    <Content Include="examples\lib\locales\ta-in.js" />
+    <Content Include="examples\lib\locales\th.js" />
+    <Content Include="examples\lib\locales\tr.js" />
+    <Content Include="examples\lib\locales\ug.js" />
+    <Content Include="examples\lib\locales\uk.js" />
+    <Content Include="examples\lib\locales\uz.js" />
+    <Content Include="examples\lib\locales\vi.js" />
+    <Content Include="examples\lib\locales\zh-cn.js" />
+    <Content Include="examples\lib\locales\zh-tw.js" />
+    <Content Include="examples\lib\main.css" />
+    <Content Include="examples\lib\main.js" />
+    <Content Include="examples\lib\main.min.css" />
+    <Content Include="examples\lib\main.min.js" />
+    <Content Include="examples\list-sticky-header.html" />
+    <Content Include="examples\list-views.html" />
+    <Content Include="examples\locales.html" />
+    <Content Include="examples\month-view.html" />
+    <Content Include="examples\natural-height.html" />
+    <Content Include="examples\php\get-events.php" />
+    <Content Include="examples\php\get-time-zones.php" />
+    <Content Include="examples\php\utils.php" />
+    <Content Include="examples\selectable.html" />
+    <Content Include="examples\theming.html" />
+    <Content Include="examples\time-zones.html" />
+    <Content Include="examples\timegrid-sticky-header.html" />
+    <Content Include="examples\timegrid-views-hscroll.html" />
+    <Content Include="examples\timegrid-views.html" />
+    <Content Include="examples\week-numbers.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\about-1.jpg" />
+    <Content Include="images\about-2.jpg" />
+    <Content Include="images\about-3.jpg" />
+    <Content Include="images\about.jpg" />
+    <Content Include="images\bg_1.jpg" />
+    <Content Include="images\bg_2.jpg" />
+    <Content Include="images\bg_3.jpg" />
+    <Content Include="images\DefaultImage.jpg" />
+    <Content Include="images\gallery-1.jpg" />
+    <Content Include="images\gallery-2.jpg" />
+    <Content Include="images\gallery-3.jpg" />
+    <Content Include="images\gallery-4.jpg" />
+    <Content Include="images\gallery-5.jpg" />
+    <Content Include="images\gallery-6.jpg" />
+    <Content Include="images\gallery-7.jpg" />
+    <Content Include="images\image_1.jpg" />
+    <Content Include="images\image_2.jpg" />
+    <Content Include="images\image_3.jpg" />
+    <Content Include="images\image_4.jpg" />
+    <Content Include="images\image_5.jpg" />
+    <Content Include="images\image_6.jpg" />
+    <Content Include="images\img.jpg" />
+    <Content Include="images\loc.png" />
+    <Content Include="images\person_1.jpg" />
+    <Content Include="images\person_2.jpg" />
+    <Content Include="images\person_3.jpg" />
+    <Content Include="images\person_4.jpg" />
+    <Content Include="images\pricing-1.jpg" />
+    <Content Include="images\pricing-2.jpg" />
+    <Content Include="images\pricing-3.jpg" />
+    <Content Include="lib\locales-all.js" />
+    <Content Include="lib\locales-all.min.js" />
+    <Content Include="lib\locales\af.js" />
+    <Content Include="lib\locales\ar-dz.js" />
+    <Content Include="lib\locales\ar-kw.js" />
+    <Content Include="lib\locales\ar-ly.js" />
+    <Content Include="lib\locales\ar-ma.js" />
+    <Content Include="lib\locales\ar-sa.js" />
+    <Content Include="lib\locales\ar-tn.js" />
+    <Content Include="lib\locales\ar.js" />
+    <Content Include="lib\locales\az.js" />
+    <Content Include="lib\locales\bg.js" />
+    <Content Include="lib\locales\bn.js" />
+    <Content Include="lib\locales\bs.js" />
+    <Content Include="lib\locales\ca.js" />
+    <Content Include="lib\locales\cs.js" />
+    <Content Include="lib\locales\cy.js" />
+    <Content Include="lib\locales\da.js" />
+    <Content Include="lib\locales\de-at.js" />
+    <Content Include="lib\locales\de.js" />
+    <Content Include="lib\locales\el.js" />
+    <Content Include="lib\locales\en-au.js" />
+    <Content Include="lib\locales\en-gb.js" />
+    <Content Include="lib\locales\en-nz.js" />
+    <Content Include="lib\locales\eo.js" />
+    <Content Include="lib\locales\es-us.js" />
+    <Content Include="lib\locales\es.js" />
+    <Content Include="lib\locales\et.js" />
+    <Content Include="lib\locales\eu.js" />
+    <Content Include="lib\locales\fa.js" />
+    <Content Include="lib\locales\fi.js" />
+    <Content Include="lib\locales\fr-ca.js" />
+    <Content Include="lib\locales\fr-ch.js" />
+    <Content Include="lib\locales\fr.js" />
+    <Content Include="lib\locales\gl.js" />
+    <Content Include="lib\locales\he.js" />
+    <Content Include="lib\locales\hi.js" />
+    <Content Include="lib\locales\hr.js" />
+    <Content Include="lib\locales\hu.js" />
+    <Content Include="lib\locales\hy-am.js" />
+    <Content Include="lib\locales\id.js" />
+    <Content Include="lib\locales\is.js" />
+    <Content Include="lib\locales\it.js" />
+    <Content Include="lib\locales\ja.js" />
+    <Content Include="lib\locales\ka.js" />
+    <Content Include="lib\locales\kk.js" />
+    <Content Include="lib\locales\km.js" />
+    <Content Include="lib\locales\ko.js" />
+    <Content Include="lib\locales\ku.js" />
+    <Content Include="lib\locales\lb.js" />
+    <Content Include="lib\locales\lt.js" />
+    <Content Include="lib\locales\lv.js" />
+    <Content Include="lib\locales\mk.js" />
+    <Content Include="lib\locales\ms.js" />
+    <Content Include="lib\locales\nb.js" />
+    <Content Include="lib\locales\ne.js" />
+    <Content Include="lib\locales\nl.js" />
+    <Content Include="lib\locales\nn.js" />
+    <Content Include="lib\locales\pl.js" />
+    <Content Include="lib\locales\pt-br.js" />
+    <Content Include="lib\locales\pt.js" />
+    <Content Include="lib\locales\ro.js" />
+    <Content Include="lib\locales\ru.js" />
+    <Content Include="lib\locales\si-lk.js" />
+    <Content Include="lib\locales\sk.js" />
+    <Content Include="lib\locales\sl.js" />
+    <Content Include="lib\locales\sm.js" />
+    <Content Include="lib\locales\sq.js" />
+    <Content Include="lib\locales\sr-cyrl.js" />
+    <Content Include="lib\locales\sr.js" />
+    <Content Include="lib\locales\sv.js" />
+    <Content Include="lib\locales\ta-in.js" />
+    <Content Include="lib\locales\th.js" />
+    <Content Include="lib\locales\tr.js" />
+    <Content Include="lib\locales\ug.js" />
+    <Content Include="lib\locales\uk.js" />
+    <Content Include="lib\locales\uz.js" />
+    <Content Include="lib\locales\vi.js" />
+    <Content Include="lib\locales\zh-cn.js" />
+    <Content Include="lib\locales\zh-tw.js" />
+    <Content Include="lib\main.css" />
+    <Content Include="lib\main.js" />
+    <Content Include="lib\main.min.css" />
+    <Content Include="lib\main.min.js" />
+    <Content Include="Models\YAPET.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>YAPET.Context.cs</LastGenOutput>
+      <DependentUpon>YAPET.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\YAPET.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>YAPET.edmx</DependentUpon>
+      <LastGenOutput>YAPET.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\YAPET.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>YAPET.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\YAPET.edmx.diagram">
+      <DependentUpon>YAPET.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTable\Chinese traditional.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="images\.DS_Store" />
+    <Content Include="Areas\Adm\Views\Activities\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Activities\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Activities\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Activities\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Activities\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\AdmHome\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\AdmLogin\AdmLogin.cshtml" />
+    <Content Include="Areas\Adm\Views\Adopts\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Adopts\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Adopts\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Adopts\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Adopts\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\FormDetails\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\FormDetails\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\FormDetails\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\FormDetails\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\FormDetails\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Freezes\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Freezes\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Freezes\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Freezes\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Freezes\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Introductions\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Introductions\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Introductions\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Introductions\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Introductions\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Knowledges\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Knowledges\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Knowledges\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Knowledges\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Knowledges\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Losts\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Losts\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Losts\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Losts\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Losts\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Posts\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Posts\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Posts\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Posts\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Shared\_Layout-Adm.cshtml" />
+    <Content Include="Areas\Adm\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Adm\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Users\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\web.config" />
+    <Content Include="Areas\Adm\Views\_ViewStart.cshtml" />
+    <Content Include="examples\json\events.json" />
+    <Content Include="css\.DS_Store" />
+    <Content Include="css\bootstrap\.DS_Store" />
+    <Content Include="css\css\.DS_Store" />
+    <Content Include="Areas\Adm\Views\Posts\_NewPost.cshtml" />
+    <Content Include="Areas\Adm\Views\Froms\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Froms\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\Froms\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Froms\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Froms\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\MsgReports\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\MsgReports\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\MsgReports\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\MsgReports\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Reports\Create.cshtml" />
+    <Content Include="Areas\Adm\Views\Reports\Details.cshtml" />
+    <Content Include="Areas\Adm\Views\Reports\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Reports\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Reports\Delete.cshtml" />
+    <Content Include="Areas\Adm\Views\MsgReports\Delete.cshtml" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Activities\ActivityDetails.cshtml" />
+    <Content Include="Views\Activities\ActivityIndex.cshtml" />
+    <Content Include="Views\Activities\IntroductionDetails.cshtml" />
+    <Content Include="Views\Activities\IntroductionIndex.cshtml" />
+    <Content Include="Views\Activities\KnowledgeDetails.cshtml" />
+    <Content Include="Views\Activities\KnowledgeIndex.cshtml" />
+    <Content Include="Views\Adopts\Create.cshtml" />
+    <Content Include="Views\Adopts\Details.cshtml" />
+    <Content Include="Views\Adopts\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\PwdForget.cshtml" />
+    <Content Include="Views\Login\PwdReset.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Login\RegisterSuccess.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\Adopts\UserAdopt.cshtml" />
+    <Content Include="Views\Losts\UserLost.cshtml" />
+    <Content Include="Views\Froms\Create.cshtml" />
+    <Content Include="Views\AdoptData\Index.cshtml" />
+    <Content Include="Views\VMBlog\Index.cshtml" />
+    <Content Include="Views\VMBlog\Details.cshtml" />
+    <Content Include="Views\VMBlog\Create.cshtml" />
+    <Content Include="Views\Photos\Create.cshtml" />
+    <Content Include="Views\Photos\Edit.cshtml" />
+    <Content Include="Views\Photos\Index.cshtml" />
+    <Content Include="Views\VMBlog\Edit.cshtml" />
+    <Content Include="Views\Losts\Create.cshtml" />
+    <Content Include="Views\Losts\Details.cshtml" />
+    <Content Include="Views\Losts\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTimeTemplate.cshtml" />
+    <Content Include="Views\Adopts\_UserAdoptIndex.cshtml" />
+    <Content Include="Views\Losts\_UserLostIndex.cshtml" />
+    <Content Include="Views\VMBlog\_UserPostIndex.cshtml" />
+    <Content Include="Views\User\PwdChange.cshtml" />
+    <Content Include="Views\VMBlog\UserBlog.cshtml" />
+    <Content Include="Views\VMBlog\_Following.cshtml" />
+    <Content Include="Views\VMBlog\_Follower.cshtml" />
+    <Content Include="Views\VMBlog\_Black.cshtml" />
+    <Content Include="Views\LPetAPI\Index.cshtml" />
+    <Content Include="Views\VMBlog\_NewPost.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52608</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52608/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

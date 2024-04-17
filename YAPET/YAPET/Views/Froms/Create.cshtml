@@ -1,0 +1,91 @@
+﻿@model YAPET.Models.From
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<section class="py-5">
+    <div class="container px-3">
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                <h1 class="fw-bolder">意見回饋</h1>
+                <p class="lead fw-normal text-muted mb-0">讓YAPET變得更讚</p>
+            </div>
+            <form novalidate>
+                <div class="col-md-6 offset-md-3">
+                    <div class="form-group form-row">
+                        @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        @Html.LabelFor(model => model.ProblemNo, "問題類型", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ProblemNo", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProblemNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Content, new { @class = "form-control", rows = "5" })
+                            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <button id="formbtn" type="button" class="btn btn-primary btn-lg px-4 mt-3">送出</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center" id="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#formbtn").on("click", () => {
+            $.ajax({
+                url: "",
+                method: "Post",
+                data: {
+                    ProblemNo: $("#ProblemNo").val(),
+                    Mail: $("#Mail").val(),
+                    Content: $("#Content").val()
+                },
+                success: function (res) {
+                    $("#modal-body").html(`<h3>${res}</h3>`)
+                    $("#exampleModal").modal("show")
+                    $("#Mail").val("")
+                    $("#Content").val("")
+                }
+            });
+        });
+
+    </script>
+}

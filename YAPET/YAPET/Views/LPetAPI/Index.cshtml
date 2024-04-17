@@ -1,0 +1,61 @@
+﻿@model IEnumerable<YAPET.Models.LPetAPI>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "公立寵物走失";
+    var p = Request.QueryString["page"];
+
+}
+<div class="container my-5">
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-4">
+        <div class="text-center">
+            <h1 class="fw-bolder mb-3">公立走失</h1>
+        </div>
+    </div>
+
+    <div class="row" style="display: flex; flex-wrap: wrap" id="test">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6" style="display:flex;flex-direction:column;">
+                <div class="card mb-4 h-100">
+                    <h2 class="card-title text-center mb-0 mt-2"><strong> @item.品種</strong></h2>
+                    <div class="p-3">
+                        <img src=" @Html.DisplayFor(modelItem => item.PICTURE)" class="img-thumbnail" style="width: 100%; height: 400px; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h6>寵物名:@item.寵物名</h6>
+                            <h6>性別:@item.性別</h6>
+                            <h6>體色: @item.毛色</h6>
+                            <h6>遺失時間:@item.遺失時間</h6>
+                            <h6>遺失地點:@item.遺失地點</h6>
+                            <h6>聯絡人:item.飼主姓名</h6>
+                            <h6>連絡電話:item.連絡電話</h6>                           
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-right">
+                        <button name="Detail" data-id="@item.KeyNo" class="btn btn-outline-dark">詳情</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+   
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+@section scripts{
+    <script>
+        $('.pagination>li').addClass('page-item');
+        $('.pagination>li>a').addClass('page-link');
+        $('.pagination').addClass('justify-content-center');
+
+        
+        $("#test").on("click", "[name='Detail']", (e) => {
+            var id = $(e.target).data("id")            
+           @*alert('@d.Where(n=>n.animal_id == id).album_file')*@
+
+        })
+    </script>
+}

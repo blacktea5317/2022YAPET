@@ -1,0 +1,95 @@
+﻿@model YAPET.Models.VMPost
+
+@{
+    ViewBag.Title = "新增貼文";
+}
+
+
+<div class="container my-5">
+    <h2 style="text-align:center">新增貼文</h2>
+    @using (Html.BeginForm("Create", "VMBlog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <hr />
+            <div class="form-group ">
+                <div class="col-md-10" id="addPhoto">
+                    @*<img id="newPhoto" height="200" />*@
+                    <input name="photo" class="form-control btn btn-dark" type="file" data-val="true" data-val-required="請上傳照片" />
+                </div>
+                 <input type="button" value="新增照片" id="AddImg" class="btn btn-dark" />
+                 <span class="text-danger" id="max4"></span>
+            </div>
+            <hr />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, "標題", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Content, "內容", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Content,10,97,new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, "文章狀態", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.RadioButton("State", "A", true) 公開
+                    @Html.RadioButton("State", "B", new { @class = "ml-3" }) 隱藏
+                    @Html.RadioButton("State", "C", new { @class = "ml-3" }) 追隨公開
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PostTypeNo, "分類", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("PostTypeNo", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PostTypeNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="確定新增" class="btn btn-dark" />
+                    <button class="btn btn-dark"> @Html.ActionLink("返回", "Index")</button>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section scripts {
+    <script>
+        $("#AddImg").on("click", () => {
+            if ($("[name='photo']").length < 4) {
+                $("#addPhoto").append(`
+                      <input name="photo" class="form-control btn btn-dark" type="file" data-val="true" data-val-required="請上傳照片" />
+                    `)
+            } else {
+                $("#max4").text("最多上傳4張照片");
+            }
+        })
+
+            //$('#photo').change(() => {
+            //    var oFReader = new FileReader();
+            //    var file = document.getElementById('photo').files[0];
+            //    oFReader.readAsDataURL(file);
+            //    oFReader.onloadend = function (oFRevent) {
+            //        var src = oFRevent.target.result;
+            //        $('#newPhoto').attr('src', src);
+            //    }
+            //})
+    </script>
+}

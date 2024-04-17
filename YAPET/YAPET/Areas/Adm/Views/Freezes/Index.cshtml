@@ -1,0 +1,86 @@
+﻿@model IEnumerable<YAPET.Models.Freeze>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "凍結會員管理列表";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+<h2 class="mt-4">凍結會員管理</h2>
+
+@*<p class="text-right">
+    @Html.ActionLink("新增凍結會員名單", "Create", new { page = p }, new { @class = "btn btn-primary" })
+</p>*@
+<table class="table" id="FreezeTable">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.User.UserId)*@凍結帳號
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.StartDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDays)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Adm.AdmId)
+            </th>*@
+            
+            <th>詳細資料</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserId)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.StartDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDays)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Adm.AdmId)
+            </td>*@
+
+        <td>
+          @*  @Html.ActionLink("修改", "Edit", new { id = item.FreezeNo }) |*@
+            @Html.ActionLink("詳細資料", "Details", new { id = item.FreezeNo, page = p }, new { @class = "btn btn-outline-primary" })
+           @* @Html.ActionLink("刪除", "Delete", new { id = item.FreezeNo })*@
+        </td>
+        </tr>
+        }
+    </tbody>
+</table>
+@*@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))*@
+
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script>
+        $('pagination>li').addClass('page-item');
+        $('pagination>li>a').addClass('page-link');
+
+        let table = $('#FreezeTable').DataTable(Tableconfig);
+
+    </script>
+}

@@ -1,0 +1,297 @@
+﻿@model YAPET.Models.VMBlog
+
+@{
+    ViewBag.Title = "貼文分享";
+
+    int user = 0;
+    if (((YAPET.Models.User)HttpContext.Current.Session["user"]) != null)
+    {
+        user = ((YAPET.Models.User)HttpContext.Current.Session["user"]).UserNo;
+    }
+}
+
+<div class="container py-5">
+    <p class="text-right mb-0">
+        @if (@Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().UserNo == user)
+        {
+            @Html.ActionLink("編輯", "Edit", new { id = ViewBag.id })<span> |</span>
+            @Html.ActionLink("刪除", "Delete", new { id = ViewBag.id }, new { onclick = "return confirm('你確定要刪除嗎？')", @class = "text-danger" })
+        }
+        else
+        {
+            if (user != 0)
+            {
+                <input type="button" value="檢舉" class="btn btn-link" data-toggle="modal" data-target="#reportModal" />
+            }
+        }
+
+
+    </p>
+    <h2 class="border border-success text-center py-3">@Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().Title</h2>
+    <div>
+        <a href="@Url.Action("UserBlog", "VMBlog", new { id = @Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().UserNo})" class="fa fa-user-circle">
+            @if (@Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().User.Nickname != null)
+            {
+                @Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().User.Nickname
+            }
+            else
+            {
+                @Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().User.UserId
+            }
+        </a> |
+        @Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().PostState.StateName |
+        @Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().PostType.PostType1 |
+        @Model.posts.Where(n => n.PostNo == ViewBag.id).FirstOrDefault().Date
+    </div>
+    <div class="row my-3">
+        @foreach (var item in Model.photos)
+        {
+            <div class="col-lg-6">
+                <img src="@Url.Action("GetImage","GetImage",new { id=item.PhotoNo, tableName = "Photo"})" style="width: 100%; height: 400px; object-fit: cover;" class="pb-3" />
+            </div>
+        }
+    </div>
+    @foreach (var item in Model.posts)
+    {
+        <p>
+            @Html.Raw(@item.Content.Replace("\n", "<br>"))
+        </p>
+    }
+    @{
+        var temp = Model.likes.Where(n => n.PostNo == ViewBag.id && n.State == true);
+        var temp2 = temp.Where(n => n.UserNo == user).FirstOrDefault();
+    }
+    <div class="d-flex">
+        <div name="like" data-postid="@ViewBag.id">
+            <i class="fa fa-heart @(temp2 == null ?"text-info" : "text-danger")" name="LikeCount">@temp.Count()</i>
+        </div>
+        <button class="btn btn-outline-info p-1" type="button" data-toggle="modal" data-target="#myModal">有誰按讚</button>
+    </div>
+
+    <div class="card my-5">
+        <div class="card-header">
+            <h3 class="text-center">留言</h3>
+        </div>
+        <div id="divcontent" class="card-body p-5">
+            @foreach (var item in Model.messages)
+            {
+                if (item.UserNo == user)
+                {
+                    @Html.ActionLink("刪除", "DeleteMessage", new { id = item.MessageNo }, new { onclick = "return confirm('你確定要刪除嗎？')", @class = "float-right btn btn-outline-secondary" })
+                }
+                else
+                {
+                    if (user != 0)
+                    {
+                        <input type="button" value="檢舉" name="msgid" data-msgid="@item.MessageNo" class="btn btn-link float-right" data-toggle="modal" data-target="#msgreportModal" />
+                    }
+                }
+
+                <a href="@Url.Action("UserBlog", "VMBlog", new { id = item.UserNo})" class="fa fa-user-circle">
+                    @if (@item.uNickname != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.uNickname)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.uId)
+                    }
+                </a>
+                <p>@Html.Raw(item.Content.Replace("\n", "<br>"))</p>
+                <p>@Html.DisplayFor(modelItem => item.Date)</p>
+                <hr />
+            }
+        </div>
+        @if (user != 0)
+        {
+            <form>
+                <div class="px-5 pb-5">
+                    <textarea id="content" rows="2" cols="20" class="form-control mb-2"></textarea>
+                    <input id="msg" type="button" value="留言" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+        else
+        {
+            <div class="px-5 pb-5">
+                <p>登入後留言</p>
+                @Html.ActionLink("登入", "Login", "Login", null, new { @class = "btn btn-primary" })
+            </div>
+        }
+
+    </div>
+    <p class="text-center">
+        @Html.ActionLink("回貼文首頁", "Index")
+    </p>
+</div>
+
+<div class="modal fade" id="msgreportModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="msgreportModalLabel">檢舉留言</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>檢舉原因</label>
+                    <textarea id="reason" rows="2" cols="20" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="msgreportbtn">送出</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reportModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reportModalLabel">檢舉貼文</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>檢舉原因</label>
+                    <textarea id="reasonpost" rows="2" cols="20" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="reportbtn">送出</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLike">有誰按讚</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="text-white">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                @foreach (var item in Model.likes)
+                {
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <p>
+                                <a href="@Url.Action("UserBlog", "VMBlog", new { id = item.UserNo })"> @Html.DisplayFor(modelItem => item.User.Name)</a>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+        let msgid=""
+        $("#msg").on("click", () => {
+            $.ajax({
+                url: "/VMBlog/CreateMessage",
+                method: "Post",
+                data: {
+                    id:@ViewBag.id ,
+                    content: $("#content").val()
+                },
+                success: function (data) {
+                    $("#content").val("")
+                    $("#divcontent").append(`
+                    <a class="float-right btn btn-outline-secondary" href="/VMBlog/DeleteMessage/${data.No}" onclick="return confirm('你確定要刪除嗎？')">刪除</a>
+                    <a href="/VMBlog/UserBlog/${data.uNo}" class="fa fa-user-circle">${data.uId}</a>
+                    <p>${data.Content}</p>
+                    <p>${data.Date}</p>
+                     `)
+                }
+            });
+        })
+
+        $("body").on("click", "[name='msgid']", (obj) => {
+            msgid = $(obj.target).data("msgid")
+        })
+
+        $("#msgreportbtn").on("click", () => {
+            $.ajax({
+                url: "/VMBlog/ReportMessage",
+                method: "Post",
+                data: {
+                    id: msgid,
+                    reason: $("#reason").val()
+                },
+                success: function (res) {
+                    $("#modal-body").html(`<h3>${res}</h3>`)
+                    $("#exampleModal").modal("show")
+                    $("#reason").val("")
+                }
+            });
+        })
+
+        $("#reportbtn").on("click", () => {
+            $.ajax({
+                url: "/VMBlog/ReportPost",
+                method: "Post",
+                data: {
+                    id: @ViewBag.id ,
+                    reason: $("#reasonpost").val()
+                },
+                success: function (res) {
+                    $("#modal-body").html(`<h3>${res}</h3>`)
+                    $("#exampleModal").modal("show")
+                    $("#reasonpost").val("")
+                }
+            });
+        })
+
+        $("body").on("click", "[name='like']", function (e) {
+            let index = $("[name='like']").index(this)
+
+            $.ajax({
+                url: "/VMBlog/Like?postid=" + $(this).data("postid"),
+                method: "Get",
+                success: function (res) {
+                    var Data = JSON.parse(res)
+                    let LikeCount = parseInt($("[name='LikeCount']").eq(index).html()) + (Data.State ? 1 : -1)
+                    $("[name='LikeCount']").eq(index).html(LikeCount)
+                    $("[name='LikeCount']").eq(index).removeClass("text-info").removeClass("text-danger").addClass((Data.State ? "text-danger" : "text-info"));
+                    console.log(Data)
+
+                },
+                error: function (err) { console.log(err) },
+            });
+
+        })
+</script>
+}

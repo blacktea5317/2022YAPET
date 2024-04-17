@@ -1,0 +1,356 @@
+﻿@model YAPET.Models.Lost
+
+@{
+    ViewBag.Title = "走失資訊";
+
+    var p = Request.QueryString["page"];
+    var speciesNo = Request.QueryString["SpeciesNo"];
+    if (speciesNo == null)
+    {
+        speciesNo = "";
+    }
+    var genderNo = Request.QueryString["GenderNo"];
+    if (genderNo == null)
+    {
+        genderNo = "";
+    }
+    var sizeNo = Request.QueryString["SizeNo"];
+    if (sizeNo == null)
+    {
+        sizeNo = "";
+    }
+    var cityNo = Request.QueryString["CityNo"];
+    if (cityNo == null)
+    {
+        cityNo = "";
+    }
+    int user = 0;
+    if (((YAPET.Models.User)HttpContext.Current.Session["user"]) != null)
+    {
+        user = ((YAPET.Models.User)HttpContext.Current.Session["user"]).UserNo;
+    }
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-5">走失資訊</h2>
+    @if (Model.UserNo == user)
+    {
+        <p class="text-right mb-0">
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+                編輯
+            </button>|
+            @Html.ActionLink("刪除", "Delete", new { id = Model.LostNo }, new { onclick = "return confirm('你確定要刪除嗎？')", @class = "ml-3 mr-2 text-danger" })
+        </p>
+    }
+    <div class="card mb-3">
+        <span class="fa fa-map-marker btn btn-primary"> @Model.City.CityName</span>
+        <div class="row no-gutters card-body">
+            <div class="col-md-6 mb-3">
+                <img src="@Url.Action("GetImage","GetImage",new { id=Model.LostNo, tableName = "Lost"})" style="width:100%" class="img-thumbnail" />
+            </div>
+            <div class="col-md-6 pl-5">
+                <div class="row">
+                    <h3 class="card-title col-12">
+                        @Html.DisplayFor(model => model.Name)
+                    </h3>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.Species.SpeciesName)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.Species.SpeciesName)
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.PetGender.Gender)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.PetGender.Gender)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.PetSize.Size)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.PetSize.Size)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.Color)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.Color)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.Age)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.Age)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.ChipNumber)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.ChipNumber)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.Time)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.Time)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.City.CityName)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.City.CityName)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.ContactPerson)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.ContactPerson)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.Contact)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            @Html.DisplayFor(model => model.Contact)
+                        </p>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>
+                            @Html.DisplayNameFor(model => model.Details)
+                        </p>
+                    </div>
+                    <div class="col-md-9">
+                        <p class="card-text">
+                            @Html.DisplayFor(model => model.Details)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <p class="card-text text-right"><small class="text-muted">刊登日期：@Html.DisplayFor(model => model.Date, "DateTimeTemplate")</small></p>
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink("返回走失列表", "Index", new { page = p, speciesNo, genderNo, sizeNo, cityNo })
+    </p>
+</div>
+
+@using (Html.BeginForm("Edit", "Losts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h4 class="modal-title text-white" id="myModalLabel">編輯走失資料</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="text-white">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="container px-5 my-5">
+                        <h4>走失資料</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.LostNo)
+                        @Html.HiddenFor(model => model.Photo)
+                        @Html.HiddenFor(model => model.ImageMimeType)
+                        @Html.HiddenFor(model => model.Date)
+                        @Html.HiddenFor(model => model.UserNo)
+                        @Html.HiddenFor(model => model.SpeciesNo)
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <img src="@Url.Action("GetImage","GetImage",new { id=Model.LostNo, tableName = "Lost"})" height="200" id="oldPhoto" />
+                                <img height="200" id="newPhoto" />
+                                <input id="photo" name="photo" class="form-control mt-3" type="file" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.SpeciesNo, "SpeciesNo", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DisplayFor(model => model.Species.SpeciesName)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.GenderNo, "GenderNo", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("GenderNo", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.GenderNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.SizeNo, "SizeNo", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("SizeNo", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SizeNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ChipNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ChipNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ChipNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.CityNo, "CityNo", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("CityNo", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CityNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Place, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Place, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Place, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.ContactPerson, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ContactPerson, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ContactPerson, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Details, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
+                        <input id="Submit1" type="submit" value="確定更新資料" class="btn btn-primary">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $('#photo').change(() => {
+            var oFReader = new FileReader();
+            var file = document.getElementById('photo').files[0];
+            oFReader.readAsDataURL(file);
+            oFReader.onloadend = function (oFRevent) {
+                var src = oFRevent.target.result;
+                $('#oldPhoto').removeAttr('src');
+                $('#newPhoto').attr('src', src);
+            }
+        })
+
+    </script>
+
+}

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<YAPET.Models.Adopt>
+
+<div class="card">
+    <span class="fa fa-user-circle btn btn-info"> 我的領養刊登</span>
+    <div class="row no-gutters card-body">
+
+        <p>
+            @Html.ActionLink(" 新增資料", "Create", null, new { @class = "btn btn-outline-primary fa fa-plus" })
+        </p>
+        <table class="table">
+            <tr>
+                <th class="d-none d-md-block">
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Photo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="d-none d-md-block">
+                        @if (item.State == true)
+                        {
+                            <span class="fa fa-check btn btn-success">開放中</span>
+
+                        }
+                        else
+                        {
+                            <span class="fa fa-exclamation btn btn-secondary"> 洽詢中</span>
+                        }
+                    </td>
+                    <td>
+                        <img src="@Url.Action("GetImage","GetImage",new { id=item.AdoptNo, tableName = "Adopt"})" style="width: 100px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td class="text-right">
+                        @Html.ActionLink("詳細資料", "Details", new { id = item.AdoptNo })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+    <p class="card-footer text-right mb-0">
+        @Html.ActionLink("觀看所有我的領養刊登", "UserAdopt", "Adopts", null, new { @class = "btn btn-info" })
+    </p>
+</div>

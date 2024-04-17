@@ -1,0 +1,63 @@
+﻿@model YAPET.Models.From
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+
+<h2 class="mt-4 mb-4">意見表單資料</h2>
+
+<div class="card border-info ">
+    <div class="card-header bg-info text-white"><h3>意見表單詳細資料</h3></div>
+
+    <dl class="card-body row">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Problem.ProblemName)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Problem.ProblemName)
+        </dd>
+
+    </dl>
+</div>
+<div class="card-footer text-right">
+    @Html.ActionLink("回上一頁", "Index", new { id = Model.FromNo, page = p }, new { @class = "btn btn-success" })
+    @*@Html.ActionLink("修改", "Edit", new { id = Model.FromNo, page = p }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("刪除", "Delete", new { id = Model.FromNo, page = p }, new { @class = "btn btn-danger" })*@
+    @{
+        if (Model.State != true)
+        {
+            @Html.ActionLink("處理", "Delete", new { id = Model.FromNo, page = p }, new { onclick = "return confirm('你確定有處理了嗎？')", @class = "float-right btn btn-outline-secondary" })
+        }
+        else
+        {
+            @Html.ActionLink("已處理處理", "Delete", new { id = Model.FromNo, page = p }, new { @class = "btn btn-danger" })
+        }
+    }
+</div>

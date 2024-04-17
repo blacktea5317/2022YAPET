@@ -1,0 +1,189 @@
+﻿@model YAPET.Models.VMBlog
+@{
+    ViewBag.Title = "個人部落格";
+
+    int user = 0;
+    if (((YAPET.Models.User)HttpContext.Current.Session["user"]) != null)
+    {
+        user = ((YAPET.Models.User)HttpContext.Current.Session["user"]).UserNo;
+    }
+}
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <div class="mb-4">
+            <img src="@Url.Action("GetImage","GetImage",new { id = ViewBag.NO, tableName = "User" })" class="img-thumbnail PImg " style="width: 14rem; height: 14rem; object-fit: cover; border-radius: 50%;" onerror="javascript:this.src='/images/image_4.jpg';this.onerror = null" />
+        </div>
+        <div class="mb-3">
+            <h2>Hello~ I'm @ViewBag.Name</h2>
+            <p class="my-3">@ViewBag.AboutMe</p>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#followingModal">
+                我的追蹤:@ViewBag.Follow
+            </button>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#followerModal">
+                我的粉絲:<span id="QQ"> @ViewBag.Followed</span>
+            </button>
+        </div>
+
+        <div class="mb-3 text-center">
+            @{
+                var te = Model.follows.Where(n => n.FollowedNo == Convert.ToInt32(ViewBag.No) && n.State == true && n.UserNo == user).FirstOrDefault();
+                var tel = Model.blacks.Where(n => n.BlackedNo == Convert.ToInt32(ViewBag.No) && n.State == true && n.UserNo == user).FirstOrDefault();
+            }
+            @if (user != ViewBag.No)
+            {
+                <span class="mr-5" name="black" data-blid="@ViewBag.No">
+                    <button class="btn @(tel == null ? "btn-outline-dark" : "btn-dark")" name="blacked">@(tel == null ?  "列入黑名單" : "解除黑名單")</button>
+                </span>
+                <span name="followers" data-foid="@ViewBag.No">
+                    <button class="btn @(te == null ? "btn-info" : "btn-danger")" name="followering">@(te == null ? "追蹤" : "已追蹤")</button>
+                </span>
+            }
+        </div>
+    </div>
+
+    <div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="followingModalLabel">我的追蹤</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Action("_Following", "VMBlog")
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="followerModal" tabindex="-1" aria-labelledby="followerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="followerModalLabel">我的粉絲</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.Action("_Follower", "VMBlog")
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @if (ViewBag.NO == user)
+    {
+        @Html.ActionLink(" 新增貼文", "Create", null, new { @class = "btn btn-outline-success fa fa-plus mb-4" })
+    }
+
+
+    <div id="blackclear" class="row" style="display: flex; flex-wrap: wrap">
+
+        @foreach (var item in Model.posts)
+        {
+
+            <div class="col-lg-3 col-sm-6" style="display:flex;flex-direction:column; ">
+                <div class="card mb-5 h-100 border-0">
+                    <span class="text-warning">@Html.DisplayFor(model => item.PostType.PostType1)</span>
+
+                    @{
+                        var photo = Model.photos.Where(n => n.PostNo == item.PostNo).FirstOrDefault();
+                        if (photo != null)
+                        {
+                            <img src="@Url.Action("GetImage","GetImage", new { id = photo.PhotoNo, tableName = "Photo" })" style="width: 100%; height: 250px; object-fit: cover; " />
+                        }
+                        else
+                        {
+                            <img src="~/images/DefaultImage.jpg" style="width: 100%; height: 250px; object-fit: cover;" />
+                        }
+                    }
+                    @Html.DisplayFor(model => item.PostState.StateName) |
+                    @Html.DisplayFor(model => item.Date, "DateTimeTemplate")
+                    <h2 class="card-title">
+                        @Html.ActionLink(@item.Title, "Details", new { id = item.PostNo })
+                    </h2>
+
+                    @{
+                        var temp = item.Like.Where(n => n.PostNo == item.PostNo && n.State == true);
+                        var temp2 = temp.Where(n => n.UserNo == user).FirstOrDefault();
+                    }
+
+                    <div class="d-flex">
+                        <div name="like" data-postid="@item.PostNo" class="mr-2">
+                            <i class="fa fa-heart @(temp2 == null ?"text-info" : "text-danger")" name="LikeCount">@temp.Count(n => n.PostNo == item.PostNo && n.State == true)</i>
+                        </div>
+                        <div>
+                            <i class="fa fa-commenting-o">@item.Message.Count(n => n.PostNo == item.PostNo && n.State == true)</i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    @Html.ActionLink("閱讀更多 >", "Details", new { id = item.PostNo }, new { @class = "text-right" })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $("body").on("click", "[name='like']", function (e) {
+            let index = $("[name='like']").index(this)
+
+            $.ajax({
+                url: "/VMBlog/Like?postid=" + $(this).data("postid"),
+                method: "Get",
+                success: function (res) {
+                    var Data = JSON.parse(res)
+                    let LikeCount = parseInt($("[name='LikeCount']").eq(index).html()) + (Data.State ? 1 : -1)
+                    $("[name='LikeCount']").eq(index).html(LikeCount)
+
+                    $("[name='LikeCount']").eq(index).removeClass("text-info").removeClass("text-danger").addClass((Data.State ? "text-danger" : "text-info"));
+                    console.log(Data)
+
+                },
+                error: function (err) { console.log(err) },
+            });
+
+        });
+
+        $("body").on("click", "[name='followers']", function (e) {
+            let index = $("[name='followers']").index(this)
+
+            $.ajax({
+                url: "/VMBlog/Followers?foid=" + $(this).data("foid"),
+                method: "Get",
+                success: function (res) {
+                    var Data = JSON.parse(res)
+                    let followering = parseInt($("#QQ").html()) + (Data.State ? 1 : -1)
+                    $('#QQ').html(followering)
+                    $("[name='followering']").eq(index).removeClass("btn btn-info").removeClass("btn btn-danger").addClass((Data.State ? "btn btn-danger" : "btn btn-info")).text((Data.State ? "已追蹤" : "追蹤"));
+                    console.log(Data)
+
+                },
+                error: function (err) { console.log(err) },
+            });
+
+        });
+
+        $("body").on("click", "[name='black']", function (e) {
+            let index = $("[name='black']").index(this)
+
+            $.ajax({
+                url: "/VMBlog/Black?blid=" + $(this).data("blid"),
+                method: "Get",
+                success: function (res) {
+                    var Data = JSON.parse(res)
+                    $("[name='blacked']").eq(index).removeClass("btn btn-outline-dark").removeClass("btn btn-dark").addClass((Data.State ? "btn btn-dark" : "btn btn-outline-dark")).text((Data.State ? "解除黑名單" : "列入黑名單"));
+
+                    $('#blackclear').hide();
+
+                },
+                error: function (err) { console.log(err) },
+            });
+        });
+    </script>
+}

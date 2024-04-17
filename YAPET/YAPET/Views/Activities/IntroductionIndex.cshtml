@@ -1,0 +1,61 @@
+﻿@model IEnumerable<YAPET.Models.Introduction>
+
+@{
+    ViewBag.Title = "最新消息";
+}
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+<div class="container my-5">
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+        <div class="text-center">
+            <h1 class="fw-bolder">最新消息</h1>
+        </div>
+    </div>
+
+    <table class="table" id="IntroductionTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th class="d-none d-lg-block">
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td class="d-none d-lg-block">
+                        <p class="txtContent">
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date, "DateTimeTemplate")
+                    </td>
+                    <td>
+                        @Html.ActionLink("閱讀更多...", "IntroductionDetails", new { id = item.IntroductionNo })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script>
+        let table = $('#IntroductionTable').DataTable(Tableconfig);
+    </script>
+}

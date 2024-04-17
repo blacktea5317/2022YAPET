@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - YAPET管理員 Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{
+        string adm = ((YAPET.Models.Adm)HttpContext.Current.Session["adm"]).AdmId;
+    }
+</head>
+<body>
+    <div class="navbar navbar-expand-md navbar-dark bg-success">
+        <div class="container">
+            @Html.ActionLink("Pets", "Index", "AdmHome", new { area = "" }, new { @class = "navbar-brand" })
+
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav ml-auto   ">
+                    <li class="nav-item ">@Html.ActionLink("平台消息", "Index", "Introductions", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("活動資訊", "Index", "Activities", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("知識小學堂", "Index", "Knowledges", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("走失寵物", "Index", "Losts", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("領養寵物", "Index", "Adopts", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("動態", "Index", "Posts", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("意見表單", "Index", "Froms", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("貼文檢舉", "Index", "Reports", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("留言檢舉", "Index", "MsgReports", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("凍結名單", "Index", "Freezes", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item ">@Html.ActionLink("會員管理", "Index", "Users", null, new { @class = "nav-link" })</li>
+                </ul>
+                <div class="ml-auto">
+                    <ul>
+                        <li class="nav-item dropdown">
+                            <div class="nav-link dropdown-toggle  btn bg-white mt-3" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                @adm
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("登出", "AdmLogin", "AdmLogin", null, new { @class = "dropdown-item" })
+
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container body-content">
+        <div class="alert alert-danger">您目前是管理員權限,請使用後立即登出</div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year -Pets版權所有</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

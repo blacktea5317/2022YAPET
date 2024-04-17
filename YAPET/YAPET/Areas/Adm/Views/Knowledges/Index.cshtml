@@ -1,0 +1,87 @@
+﻿@model IEnumerable<YAPET.Models.Knowledge>
+
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "知識小學堂管理列表";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+<h2 class="mt-4">小學堂管理</h2>
+
+<p class="text-right">
+    @Html.ActionLink("新增小學堂", "Create", new { page = p }, new { @class = "btn btn-primary" })
+</p>
+
+
+
+
+<table class="table" id="KnowledgeTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>*@
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Adm.AdmId)
+            </th>
+            <th>詳細資料</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Action("GetImage",new { id = item.KnowledgeNo })" width="100" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>*@
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adm.AdmId)
+                </td>
+                <td>
+                    @*  @Html.ActionLink("修改", "Edit", new { id = item.KnowledgeNo }) |*@
+                    @Html.ActionLink("詳細資料", "Details", new { id = item.KnowledgeNo, page = p }, new { @class = "btn btn-outline-primary" })
+                    @*   @Html.ActionLink("刪除", "Delete", new { id = item.KnowledgeNo })*@
+                </td>
+            </tr>
+        }
+
+</table>
+@*@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))*@
+
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script>
+        $('pagination>li').addClass('page-item');
+        $('pagination>li>a').addClass('page-link');
+
+        let table = $('#KnowledgeTable').DataTable(Tableconfig);
+
+    </script>
+}

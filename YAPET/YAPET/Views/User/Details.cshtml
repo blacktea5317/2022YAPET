@@ -1,0 +1,338 @@
+﻿@model YAPET.Models.User
+
+@{
+    ViewBag.Title = "會員管理";
+}
+
+
+<div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+    <div class="text-center">
+
+        <img src="@Url.Action("GetImage","GetImage",new { id=Model.UserNo, tableName = "User"})" style="width: 14rem; height: 14rem; object-fit: cover; border-radius: 50%;" onerror="javascript:this.src='/images/image_4.jpg';this.onerror = null" />
+        @if (Model.Nickname != null)
+        {
+            <h1 class="fw-bolder mt-3">@Html.DisplayFor(model => model.Nickname)</h1>
+        }
+        else
+        {
+            <h1 class="fw-bolder mt-3">@Html.DisplayFor(model => model.Name)</h1>
+        }
+
+    </div>
+</div>
+<div class="container my-5">
+
+    <div class="row">
+        <div class="col-lg-3 mb-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-me-tab" data-toggle="pill" href="#v-pills-me" aria-controls="v-pills-me" aria-selected="true">個人資料</a>
+                <a class="nav-link" id="v-pills-adopt-tab" data-toggle="pill" href="#v-pills-adopt" aria-controls="v-pills-adopt" aria-selected="false">我的送養刊登<span class="badge badge-pill">@Model.Adopt.Count()</span></a>
+                <a class="nav-link" id="v-pills-lost-tab" data-toggle="pill" href="#v-pills-lost" aria-controls="v-pills-lost" aria-selected="false">我的走失刊登<span class="badge badge-pill">@Model.Lost.Count()</span></a>
+                <a class="nav-link" id="v-pills-post-tab" data-toggle="pill" href="#v-pills-post" aria-controls="v-pills-post" aria-selected="false">我的貼文分享<span class="badge badge-pill">@Model.Post.Count(c => c.State == "A" || c.State == "B" || c.State == "C")</span></a>
+                <a class="nav-link" id="v-pills-black-tab" data-toggle="pill" href="#v-pills-black" aria-controls="v-pills-black" aria-selected="false">我的黑名單<span class="badge badge-pill">@Model.Black.Count(c => c.State == true)</span></a>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade" id="v-pills-adopt" aria-labelledby="v-pills-adopt-tab">
+                    @Html.Action("_UserAdoptIndex", "Adopts", new { @class = "hide" })
+                </div>
+                <div class="tab-pane fade" id="v-pills-lost" aria-labelledby="v-pills-lost-tab">
+                    @Html.Action("_UserLostIndex", "Losts", new { @class = "hide" })
+                </div>
+                <div class="tab-pane fade" id="v-pills-post" aria-labelledby="v-pills-post-tab">
+                    @Html.Action("_UserPostIndex", "VMBlog", new { @class = "hide" })
+                </div>
+                <div class="tab-pane fade" id="v-pills-black" aria-labelledby="v-pills-black-tab">
+                    @Html.Action("_Black", "VMBlog", new { @class = "hide" })
+                </div>
+
+
+                <div class="tab-pane fade show active" id="v-pills-me" aria-labelledby="v-pills-me-tab">
+                    <div class="card">
+                        <span class="fa fa-user-circle btn btn-primary"> 個人資料</span>
+                        <div class="row no-gutters card-body">
+
+                            <div>
+                                <div class="row px-5">
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.UserId)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p>
+                                            @Html.DisplayFor(model => model.UserId)
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p>
+                                            @Html.DisplayFor(model => model.Name)
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.Nickname)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p>
+                                            @Html.DisplayFor(model => model.Nickname)
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.Birthday)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        @if (Model.Birthday != null)
+                                        {
+                                            <p>
+                                                @Html.DisplayFor(model => model.Birthday, "DateTimeTemplate")
+                                            </p>
+                                        }
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.Gender)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        @if (Model.Gender == true)
+                                        {
+                                            <p>男</p>
+                                        }
+                                        else if (Model.Gender == false)
+                                        {
+                                            <p>女</p>
+                                        }
+                                        else
+                                        {
+                                            <p></p>
+                                        }
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.EMail)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p>
+                                            @Html.DisplayFor(model => model.EMail)
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.Telephone)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p>
+                                            @Html.DisplayFor(model => model.Telephone)
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.Address)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p>
+                                            @Html.DisplayFor(model => model.Address)
+                                        </p>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <p>
+                                            @Html.DisplayNameFor(model => model.AboutMe)
+                                        </p>
+
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p>
+                                            @Html.DisplayFor(model => model.AboutMe)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="card-footer text-right mb-0">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                編輯
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content border-primary">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">會員資料修改</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="container px-5 my-5">
+                        <h4>個人資料</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.UserNo)
+                        @Html.HiddenFor(model => model.ImageMimeType)
+                        @Html.HiddenFor(model => model.Herder)
+                        @Html.HiddenFor(model => model.State)
+                        @Html.HiddenFor(model => model.UserId)
+                        @Html.HiddenFor(model => model.UserPwd)
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DisplayFor(model => model.UserId)
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.UserPwd, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.ActionLink("更改密碼", "PwdChange", null, new { @class = "btn btn-outline-secondary" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Herder, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @if (Model.Herder == null)
+                                {
+                                    <img src="~/images/DefaultImage.jpg" height="200" id="oldPhoto" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Action("GetImage","GetImage",new { id=Model.UserNo, tableName = "User"})" height="200" id="oldPhoto" />
+                                }
+                                <img height="200" id="newPhoto" />
+                                <input id="photo" name="photo" class="form-control mt-3" type="file" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Nickname, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.RadioButton("Gender", "true") 男
+                                @Html.RadioButton("Gender", "false") 女
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.EMail, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.EMail, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EMail, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.AboutMe, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.AboutMe, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <input id="Submit1" type="submit" value="確定修改" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $('#photo').change(() => {
+            var oFReader = new FileReader();
+            var file = document.getElementById('photo').files[0];
+            oFReader.readAsDataURL(file);
+            oFReader.onloadend = function (oFRevent) {
+                var src = oFRevent.target.result;
+                $('#oldPhoto').removeAttr('src');
+                $('#newPhoto').attr('src', src);
+            }
+        })
+
+    </script>
+
+}

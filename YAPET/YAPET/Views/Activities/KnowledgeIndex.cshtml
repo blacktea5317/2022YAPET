@@ -1,0 +1,80 @@
+﻿@model IEnumerable<YAPET.Models.Knowledge>
+
+@{
+    ViewBag.Title = "知識小學堂";
+}
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+<div class="container my-5">
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+        <div class="text-center">
+            <h1 class="fw-bolder">知識小學堂</h1>
+        </div>
+    </div>
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body ">
+                    <div id="link" class="justify-content-center">
+                        <iframe width="1105" height="700" src="https://www.youtube.com/embed/dHTJK-VoOfw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table" id="KnowledgeTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td width="30%">
+                        <p class="txtContent">
+                            @Html.DisplayFor(modelItem => item.Content)
+                        </p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date, "DateTimeTemplate")
+                    </td>
+                    <td>
+                        @Html.ActionLink("閱讀更多...", "KnowledgeDetails", new { id = item.KnowledgeNo })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        $(window).ready(() => {
+            $('#myModal').modal('show');
+        })
+    </script>
+    <script>
+        let table = $('#KnowledgeTable').DataTable(Tableconfig);
+    </script>
+}

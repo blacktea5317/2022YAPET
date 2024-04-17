@@ -1,0 +1,182 @@
+﻿@model YAPET.Models.VMBlog
+
+@{
+    ViewBag.Title = "貼文分享";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var ptno = Request.QueryString["ptno"];
+
+   
+    var temppage = "1";
+    if (Request.QueryString["page"] != "")
+    {
+        temppage = Request.QueryString["page"];
+    }
+
+}
+
+<div class="container my-5">
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+        <div class="text-center">
+            @switch (ptno)
+            {
+                case null:
+                    <h1 class="fw-bolder mb-3">首頁</h1>
+                    break;
+                case "A":
+                    <h1 class="fw-bolder mb-3">心情版</h1>
+                    break;
+
+                case "B":
+                    <h1 class="fw-bolder mb-3">經驗交流版</h1>
+                    break;
+
+                case "C":
+                    <h1 class="fw-bolder mb-3">提問版</h1>
+                    break;
+
+                case "D":
+                    <h1 class="fw-bolder mb-3">八卦版</h1>
+                    break;
+
+                case "E":
+                    <h1 class="fw-bolder mb-3">其他版</h1>
+                    break;
+            }
+
+            <div class="text-center">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    @Html.ActionLink("首頁", "Index", null, new { @class = "btn btn-primary" })
+                    @foreach (var item in Model.posttypes)
+                    {
+                        @Html.ActionLink(@item.PostType1, "Index", new { ptno = item.PostTypeNo }, new { @class = "btn btn-outline-dark" })
+                    }
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar mb-4">
+ 
+        <div class="mr-auto">
+        </div>
+        @using (Html.BeginForm(Html.BeginForm("Index", "Posts", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" })))
+        {
+            <input name="ptno" type="hidden" value="@Request.QueryString["ptno"]" />
+            @Html.TextBox("searchTitle", "", new { @class = "form-control mr-sm-2" })
+            <button type="submit" class="fa fa-search btn btn-primary my-2 my-sm-0"> 搜尋</button>
+        }
+    </div>
+
+    <div class="row" style="display: flex; flex-wrap: wrap">
+
+        @foreach (var item in Model.posts)
+        {
+
+            <div class="col-lg-3 col-sm-6" style="display:flex;flex-direction:column;">
+                <div class="card mb-5 h-100 border-0">
+                    <span class="text-warning">@Html.DisplayFor(model => item.PostType.PostType1)</span>
+                  
+                    @{
+                        var photo = Model.photos.Where(n => n.PostNo == item.PostNo).FirstOrDefault();
+                        if (photo != null)
+                        {
+                            <img src="@Url.Action("GetImage","Posts", new { id = photo.PhotoNo, tableName = "Photo" })" style="width: 100%; height: 250px; object-fit: cover; " />
+                        }
+                        else
+                        {
+                            <img src="~/images/image_4.jpg" style="width: 100%; height: 250px; object-fit: cover;" />
+                        }
+                    }
+
+                    @Html.DisplayFor(model => item.PostState.StateName) |
+                    @Html.DisplayFor(model => item.Date, "DateTimeTemplate")
+                    <h2 class="card-title">
+                        @Html.ActionLink(@item.Title, "Details", new { id = item.PostNo })
+                    </h2>
+
+                    @{
+                        var temp = item.Like.Where(n => n.PostNo == item.PostNo && n.State == true);
+                      
+                    }
+
+                    <div class="d-flex">
+                        <div name="like" data-postid="@item.PostNo" class="mr-2">
+                            <i class="fa fa-heart " name="LikeCount">@temp.Count(n => n.PostNo == item.PostNo && n.State == true)</i>
+                        </div>
+                        <div>
+                            <i class="fa fa-commenting-o">@item.Message.Count(n => n.PostNo == item.PostNo && n.State == true)</i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    @Html.ActionLink("閱讀更多 ", "Details", new { id = item.PostNo }, new { @class = "text-right" })
+                </div>
+            </div>
+        }
+    </div>
+
+    <div id="Page">
+
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+           //目前網址參數
+        var ttttt = ""
+        var search = location.search.replace("page=@temppage", "")
+        search = search.length <= 1 ? "" : search
+        if (search == "") {
+            ttttt = "?"
+        } else {
+            search = search.replace("&", "")
+            ttttt = "&"
+        }
+
+        var html = `<nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="/VMBlog${search}${ttttt}page=${parseInt(@temppage) - 1}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>`
+
+        for (i = 1; i <= @Model.PageCount; i++) {
+            html += `<li class="page-item"><a class="page-link" href="/VMBlog${search}${ttttt}page=${i}">${i}</a></li>`
+        }
+            html += `<li class="page-item">
+                        <a class="page-link" href="/VMBlog${search}${ttttt}page=${parseInt(@temppage) + 1}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li></ul></nav>`
+
+            $("#Page").append(html)
+
+        $('.pagination>li').addClass('page-item');
+        $('.pagination>li>a').addClass('page-link');
+        $('.pagination').addClass('justify-content-center');
+
+
+        $("body").on("click", "[name='like']", function (e) {
+            let index = $("[name='like']").index(this)
+
+            $.ajax({
+                url: "/VMBlog/Like?postid=" + $(this).data("postid"),
+                method: "Get",
+                success: function (res) {
+                    var Data = JSON.parse(res)
+                    let LikeCount = parseInt($("[name='LikeCount']").eq(index).html()) + (Data.State ? 1 : -1)
+                    $("[name='LikeCount']").eq(index).html(LikeCount)
+
+                    $("[name='LikeCount']").eq(index).removeClass("text-info").removeClass("text-danger").addClass((Data.State ? "text-danger" : "text-info"));
+                    console.log(Data)
+
+                },
+                error: function (err) { console.log(err) },
+            });
+
+        })
+    </script>
+}

@@ -1,0 +1,144 @@
+﻿@model IEnumerable<YAPET.Models.User>
+
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "會員管理列表";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+
+}
+
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+
+<h2 class="mt-4">會員資料管理</h2>
+
+@*<p class="text-right">
+        @Html.ActionLink("新增客戶", "Create", new { page = p }, new { @class = "btn btn-primary" })
+    </p>*@
+<table class="table" id="UserTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.UserPwd)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.EMail)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Herder)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Telephone)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nickname)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Freeze1)
+            </th>*@
+            <th>詳細資料</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.UserPwd)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMail)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Herder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telephone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nickname)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Freeze1)
+                </td>*@
+
+                <td>
+                    @*@Html.ActionLink("修改", "Edit", new { id = item.UserNo }) |*@
+                    @Html.ActionLink("詳細資料", "Details", new { id = item.UserNo }, new { @class = "btn btn-outline-primary" }) 
+                  @*  @Html.ActionLink("刪除", "Delete", new { id = item.UserNo })*@
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+
+
+@*@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+    @section scripts{
+        <script>
+            $('.pagination>li').addClass('page-item');
+            $('.pagination>li>a').addClass('page-link');
+            $('.pagination-container>ul').addClass(' justify-content-center');
+        </script>
+    }*@
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script>
+        $('pagination>li').addClass('page-item');
+        $('pagination>li>a').addClass('page-link');
+
+        //$(document).ready(function () {
+        //    $('#myTable').DataTable({
+        //        Tableconfig
+        //    });
+        //});
+
+     
+
+         let table = $('#UserTable').DataTable(Tableconfig);
+
+    </script>
+}

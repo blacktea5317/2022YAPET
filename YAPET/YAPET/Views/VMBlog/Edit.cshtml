@@ -1,0 +1,69 @@
+﻿@model YAPET.Models.Post
+
+@{
+    ViewBag.Title = "編輯文章";
+}
+<div class="container my-5">
+    <h2 style="text-align:center">編輯文章</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.PostNo)
+            @Html.HiddenFor(model => model.UserNo)
+            @Html.HiddenFor(model => model.Date)
+
+            <div class="my-3">
+                @foreach (var item in Model.Photo)
+                {
+                    <img src="@Url.Action("GetImage","GetImage", new { id = @item.PhotoNo, tableName = "Photo" })" style="width: 250px; height: 250px; object-fit: cover;" />
+                }
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, "文章標題", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Content, "文章內容", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Content, 10, 97, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostTypeNo, "文章分類", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PostTypeNo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PostTypeNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, "文章狀態", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButton("State", "A") 公開
+                @Html.RadioButton("State", "B", new { @class = "ml-3" }) 隱藏
+                @Html.RadioButton("State", "C", new { @class = "ml-3" }) 追隨公開
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="確定修改" class="btn btn-dark" />
+                <button class="btn btn-dark"> @Html.ActionLink("回貼文首頁", "Index")</button>
+            </div>
+        </div>
+
+    }
+</div>

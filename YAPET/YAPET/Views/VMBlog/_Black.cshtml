@@ -1,0 +1,16 @@
+﻿@model IEnumerable<YAPET.Models.Black>
+
+<div class="card">
+    <span class="fa fa-user-circle btn btn-dark"> 我的黑名單</span>
+    <div class="card-body">
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("UserBlog", "VMBlog", new { id = item.BlackedNo})">
+                <img src="@Url.Action("GetImage", "GetImage", new { id =item.BlackedNo, tableName = "User" })" style="width: 50px; height: 50px; object-fit: cover;" onerror="javascript:this.src='https://miro.medium.com/max/1400/1*Y4EDX48LsTKGzhr9EyTPKA.png';this.onerror = null" />
+                <span>@item.User1.Name (@Html.DisplayFor(model => item.User1.UserId))</span>
+            </a>
+            @Html.ActionLink("解除黑名單", "BlackDelete", new { id = item.BlackNo }, new { @class = "btn btn-dark float-right" })
+            <hr />
+        }
+    </div>
+</div>

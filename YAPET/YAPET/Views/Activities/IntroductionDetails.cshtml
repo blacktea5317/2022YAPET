@@ -1,0 +1,30 @@
+﻿@model YAPET.Models.Introduction
+
+@{
+    ViewBag.Title = "最新消息";
+}
+
+<div class="container my-5">
+    <div class="card border-info">
+        <div class="card-header bg-info">
+            <h3 class="text-center text-white mb-0">@Html.DisplayFor(model => model.Title)</h3>
+        </div>
+        <div class="row no-gutters card-body pb-0">
+            <div class="col-md-4 mb-3">
+                <img src="@Url.Action("GetImage","GetImage",new { id=Model.IntroductionNo,tableName="Introduction"})" style="width:100%" />
+            </div>
+            <div class="col-md-8 pl-5">
+                <p>
+                    @Html.Raw(Model.Content.Replace("\n", "<br>"))
+                </p>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+            <p class="text-muted text-right mb-0">更新日期： @Html.DisplayFor(model => model.Date)</p>
+        </div>
+    </div>
+
+    <p class="text-right">
+        @Html.ActionLink("回最新消息列表", "IntroductionIndex")
+    </p>
+</div>

@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Hw_MyPetsModelStoreContainer" CdmEntityContainer="Hw_MyPetsEntities">
+    <EntitySetMapping Name="Activity">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Activity">
+        <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AdmNo" ColumnName="AdmNo" />
+          <ScalarProperty Name="ActivityNo" ColumnName="ActivityNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adm">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Adm">
+        <MappingFragment StoreEntitySet="Adm">
+          <ScalarProperty Name="AdmPwd" ColumnName="AdmPwd" />
+          <ScalarProperty Name="AdmId" ColumnName="AdmId" />
+          <ScalarProperty Name="AdmNo" ColumnName="AdmNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adopt">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Adopt">
+        <MappingFragment StoreEntitySet="Adopt">
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CityNo" ColumnName="CityNo" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="ChipNumber" ColumnName="ChipNumber" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="LigationState" ColumnName="LigationState" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="SizeNo" ColumnName="SizeNo" />
+          <ScalarProperty Name="GenderNo" ColumnName="GenderNo" />
+          <ScalarProperty Name="SpeciesNo" ColumnName="SpeciesNo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="AdoptNo" ColumnName="AdoptNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Black">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Black">
+        <MappingFragment StoreEntitySet="Black">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="BlackedNo" ColumnName="BlackedNo" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="BlackNo" ColumnName="BlackNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityNo" ColumnName="CityNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Follow">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Follow">
+        <MappingFragment StoreEntitySet="Follow">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="FollowedNo" ColumnName="FollowedNo" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="FollowNo" ColumnName="FollowNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormDetail">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.FormDetail">
+        <MappingFragment StoreEntitySet="FormDetail">
+          <ScalarProperty Name="AdmNo" ColumnName="AdmNo" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="FormNo" ColumnName="FormNo" />
+          <ScalarProperty Name="DetailNo" ColumnName="DetailNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Freeze">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Freeze">
+        <MappingFragment StoreEntitySet="Freeze">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="AdmNo" ColumnName="AdmNo" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="EndDays" ColumnName="EndDays" />
+          <ScalarProperty Name="StartDays" ColumnName="StartDays" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="FreezeNo" ColumnName="FreezeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="From">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.From">
+        <MappingFragment StoreEntitySet="From">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="ProblemNo" ColumnName="ProblemNo" />
+          <ScalarProperty Name="FromNo" ColumnName="FromNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Introduction">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Introduction">
+        <MappingFragment StoreEntitySet="Introduction">
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AdmNo" ColumnName="AdmNo" />
+          <ScalarProperty Name="IntroductionNo" ColumnName="IntroductionNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Knowledge">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Knowledge">
+        <MappingFragment StoreEntitySet="Knowledge">
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AdmNo" ColumnName="AdmNo" />
+          <ScalarProperty Name="KnowledgeNo" ColumnName="KnowledgeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Like">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Like">
+        <MappingFragment StoreEntitySet="Like">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="PostNo" ColumnName="PostNo" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="LikeNo" ColumnName="LikeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lost">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Lost">
+        <MappingFragment StoreEntitySet="Lost">
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CityNo" ColumnName="CityNo" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="ChipNumber" ColumnName="ChipNumber" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="SizeNo" ColumnName="SizeNo" />
+          <ScalarProperty Name="GenderNo" ColumnName="GenderNo" />
+          <ScalarProperty Name="SpeciesNo" ColumnName="SpeciesNo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="LostNo" ColumnName="LostNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="PostNo" ColumnName="PostNo" />
+          <ScalarProperty Name="MessageNo" ColumnName="MessageNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MsgReport">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.MsgReport">
+        <MappingFragment StoreEntitySet="MsgReport">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="MessageNo" ColumnName="MessageNo" />
+          <ScalarProperty Name="MsgReportNo" ColumnName="MsgReportNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PetGender">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.PetGender">
+        <MappingFragment StoreEntitySet="PetGender">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="GenderNo" ColumnName="GenderNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PetSize">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.PetSize">
+        <MappingFragment StoreEntitySet="PetSize">
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="SizeNo" ColumnName="SizeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Photo">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Photo">
+        <MappingFragment StoreEntitySet="Photo">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Photo1" ColumnName="Photo" />
+          <ScalarProperty Name="PostNo" ColumnName="PostNo" />
+          <ScalarProperty Name="PhotoNo" ColumnName="PhotoNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="PostTypeNo" ColumnName="PostTypeNo" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="PostNo" ColumnName="PostNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostState">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.PostState">
+        <MappingFragment StoreEntitySet="PostState">
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateNo" ColumnName="StateNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostType">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.PostType">
+        <MappingFragment StoreEntitySet="PostType">
+          <ScalarProperty Name="PostType1" ColumnName="PostType" />
+          <ScalarProperty Name="PostTypeNo" ColumnName="PostTypeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Problem">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Problem">
+        <MappingFragment StoreEntitySet="Problem">
+          <ScalarProperty Name="ProblemName" ColumnName="ProblemName" />
+          <ScalarProperty Name="ProblemNo" ColumnName="ProblemNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Report">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Report">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="PostNo" ColumnName="PostNo" />
+          <ScalarProperty Name="ReportNo" ColumnName="ReportNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResetUserPwd">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.ResetUserPwd">
+        <MappingFragment StoreEntitySet="ResetUserPwd">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="ResetNo" ColumnName="ResetNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Species">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.Species">
+        <MappingFragment StoreEntitySet="Species">
+          <ScalarProperty Name="SpeciesName" ColumnName="SpeciesName" />
+          <ScalarProperty Name="SpeciesNo" ColumnName="SpeciesNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="Hw_MyPetsModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Herder" ColumnName="Herder" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

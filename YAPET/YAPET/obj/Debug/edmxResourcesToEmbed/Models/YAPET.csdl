@@ -1,0 +1,974 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Hw_MyPetsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Hw_MyPetsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Activity" EntityType="Hw_MyPetsModel.Activity" />
+    <EntitySet Name="Adm" EntityType="Hw_MyPetsModel.Adm" />
+    <EntitySet Name="Adopt" EntityType="Hw_MyPetsModel.Adopt" />
+    <EntitySet Name="Black" EntityType="Hw_MyPetsModel.Black" />
+    <EntitySet Name="City" EntityType="Hw_MyPetsModel.City" />
+    <EntitySet Name="Follow" EntityType="Hw_MyPetsModel.Follow" />
+    <EntitySet Name="FormDetail" EntityType="Hw_MyPetsModel.FormDetail" />
+    <EntitySet Name="Freeze" EntityType="Hw_MyPetsModel.Freeze" />
+    <EntitySet Name="From" EntityType="Hw_MyPetsModel.From" />
+    <EntitySet Name="Introduction" EntityType="Hw_MyPetsModel.Introduction" />
+    <EntitySet Name="Knowledge" EntityType="Hw_MyPetsModel.Knowledge" />
+    <EntitySet Name="Like" EntityType="Hw_MyPetsModel.Like" />
+    <EntitySet Name="Lost" EntityType="Hw_MyPetsModel.Lost" />
+    <EntitySet Name="Message" EntityType="Hw_MyPetsModel.Message" />
+    <EntitySet Name="MsgReport" EntityType="Hw_MyPetsModel.MsgReport" />
+    <EntitySet Name="PetGender" EntityType="Hw_MyPetsModel.PetGender" />
+    <EntitySet Name="PetSize" EntityType="Hw_MyPetsModel.PetSize" />
+    <EntitySet Name="Photo" EntityType="Hw_MyPetsModel.Photo" />
+    <EntitySet Name="Post" EntityType="Hw_MyPetsModel.Post" />
+    <EntitySet Name="PostState" EntityType="Hw_MyPetsModel.PostState" />
+    <EntitySet Name="PostType" EntityType="Hw_MyPetsModel.PostType" />
+    <EntitySet Name="Problem" EntityType="Hw_MyPetsModel.Problem" />
+    <EntitySet Name="Report" EntityType="Hw_MyPetsModel.Report" />
+    <EntitySet Name="ResetUserPwd" EntityType="Hw_MyPetsModel.ResetUserPwd" />
+    <EntitySet Name="Species" EntityType="Hw_MyPetsModel.Species" />
+    <EntitySet Name="sysdiagrams" EntityType="Hw_MyPetsModel.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Hw_MyPetsModel.User" />
+    <AssociationSet Name="FK_Activity_Adm" Association="Hw_MyPetsModel.FK_Activity_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="Activity" EntitySet="Activity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDetail_Adm" Association="Hw_MyPetsModel.FK_FormDetail_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="FormDetail" EntitySet="FormDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Freeze_Adm" Association="Hw_MyPetsModel.FK_Freeze_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="Freeze" EntitySet="Freeze" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Introduction_Adm" Association="Hw_MyPetsModel.FK_Introduction_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="Introduction" EntitySet="Introduction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Knowledge_Adm" Association="Hw_MyPetsModel.FK_Knowledge_Adm">
+      <End Role="Adm" EntitySet="Adm" />
+      <End Role="Knowledge" EntitySet="Knowledge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_City" Association="Hw_MyPetsModel.FK_Adopt_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_PetGender" Association="Hw_MyPetsModel.FK_Adopt_PetGender">
+      <End Role="PetGender" EntitySet="PetGender" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_PetSize" Association="Hw_MyPetsModel.FK_Adopt_PetSize">
+      <End Role="PetSize" EntitySet="PetSize" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_Species" Association="Hw_MyPetsModel.FK_Adopt_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Adopt_User" Association="Hw_MyPetsModel.FK_Adopt_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Adopt" EntitySet="Adopt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Black_User" Association="Hw_MyPetsModel.FK_Black_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Black" EntitySet="Black" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Black_User1" Association="Hw_MyPetsModel.FK_Black_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Black" EntitySet="Black" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_City" Association="Hw_MyPetsModel.FK_Lost_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Follow_User" Association="Hw_MyPetsModel.FK_Follow_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Follow" EntitySet="Follow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Follow_User1" Association="Hw_MyPetsModel.FK_Follow_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Follow" EntitySet="Follow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDetail_From" Association="Hw_MyPetsModel.FK_FormDetail_From">
+      <End Role="From" EntitySet="From" />
+      <End Role="FormDetail" EntitySet="FormDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FormDetail_User" Association="Hw_MyPetsModel.FK_FormDetail_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FormDetail" EntitySet="FormDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Freeze_User" Association="Hw_MyPetsModel.FK_Freeze_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Freeze" EntitySet="Freeze" />
+    </AssociationSet>
+    <AssociationSet Name="FK_From_Problem" Association="Hw_MyPetsModel.FK_From_Problem">
+      <End Role="Problem" EntitySet="Problem" />
+      <End Role="From" EntitySet="From" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Like_Post" Association="Hw_MyPetsModel.FK_Like_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Like" EntitySet="Like" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Like_User" Association="Hw_MyPetsModel.FK_Like_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Like" EntitySet="Like" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_PetGender" Association="Hw_MyPetsModel.FK_Lost_PetGender">
+      <End Role="PetGender" EntitySet="PetGender" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_PetSize" Association="Hw_MyPetsModel.FK_Lost_PetSize">
+      <End Role="PetSize" EntitySet="PetSize" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_Species" Association="Hw_MyPetsModel.FK_Lost_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lost_User" Association="Hw_MyPetsModel.FK_Lost_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Lost" EntitySet="Lost" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Post" Association="Hw_MyPetsModel.FK_Message_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_User" Association="Hw_MyPetsModel.FK_Message_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MsgReport_Message" Association="Hw_MyPetsModel.FK_MsgReport_Message">
+      <End Role="Message" EntitySet="Message" />
+      <End Role="MsgReport" EntitySet="MsgReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MsgReport_User" Association="Hw_MyPetsModel.FK_MsgReport_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="MsgReport" EntitySet="MsgReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Photo_Post" Association="Hw_MyPetsModel.FK_Photo_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Photo" EntitySet="Photo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Post_PostState" Association="Hw_MyPetsModel.FK_Post_PostState">
+      <End Role="PostState" EntitySet="PostState" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Post_PostType" Association="Hw_MyPetsModel.FK_Post_PostType">
+      <End Role="PostType" EntitySet="PostType" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Post_User" Association="Hw_MyPetsModel.FK_Post_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Report_Post" Association="Hw_MyPetsModel.FK_Report_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Report_User" Association="Hw_MyPetsModel.FK_Report_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResetUserPwd_User" Association="Hw_MyPetsModel.FK_ResetUserPwd_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ResetUserPwd" EntitySet="ResetUserPwd" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="ActivityNo" />
+    </Key>
+    <Property Name="ActivityNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="AdmNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adm" Relationship="Hw_MyPetsModel.FK_Activity_Adm" FromRole="Activity" ToRole="Adm" />
+  </EntityType>
+  <EntityType Name="Adm">
+    <Key>
+      <PropertyRef Name="AdmNo" />
+    </Key>
+    <Property Name="AdmNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="AdmId" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="AdmPwd" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Activity" Relationship="Hw_MyPetsModel.FK_Activity_Adm" FromRole="Adm" ToRole="Activity" />
+    <NavigationProperty Name="FormDetail" Relationship="Hw_MyPetsModel.FK_FormDetail_Adm" FromRole="Adm" ToRole="FormDetail" />
+    <NavigationProperty Name="Freeze" Relationship="Hw_MyPetsModel.FK_Freeze_Adm" FromRole="Adm" ToRole="Freeze" />
+    <NavigationProperty Name="Introduction" Relationship="Hw_MyPetsModel.FK_Introduction_Adm" FromRole="Adm" ToRole="Introduction" />
+    <NavigationProperty Name="Knowledge" Relationship="Hw_MyPetsModel.FK_Knowledge_Adm" FromRole="Adm" ToRole="Knowledge" />
+  </EntityType>
+  <EntityType Name="Adopt">
+    <Key>
+      <PropertyRef Name="AdoptNo" />
+    </Key>
+    <Property Name="AdoptNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SpeciesNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="GenderNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="SizeNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Boolean" />
+    <Property Name="LigationState" Type="Boolean" />
+    <Property Name="ContactPerson" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChipNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="CityNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="City" Relationship="Hw_MyPetsModel.FK_Adopt_City" FromRole="Adopt" ToRole="City" />
+    <NavigationProperty Name="PetGender" Relationship="Hw_MyPetsModel.FK_Adopt_PetGender" FromRole="Adopt" ToRole="PetGender" />
+    <NavigationProperty Name="PetSize" Relationship="Hw_MyPetsModel.FK_Adopt_PetSize" FromRole="Adopt" ToRole="PetSize" />
+    <NavigationProperty Name="Species" Relationship="Hw_MyPetsModel.FK_Adopt_Species" FromRole="Adopt" ToRole="Species" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Adopt_User" FromRole="Adopt" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Black">
+    <Key>
+      <PropertyRef Name="BlackNo" />
+    </Key>
+    <Property Name="BlackNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="BlackedNo" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Black_User" FromRole="Black" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Hw_MyPetsModel.FK_Black_User1" FromRole="Black" ToRole="User" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityNo" />
+    </Key>
+    <Property Name="CityNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CityName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adopt" Relationship="Hw_MyPetsModel.FK_Adopt_City" FromRole="City" ToRole="Adopt" />
+    <NavigationProperty Name="Lost" Relationship="Hw_MyPetsModel.FK_Lost_City" FromRole="City" ToRole="Lost" />
+  </EntityType>
+  <EntityType Name="Follow">
+    <Key>
+      <PropertyRef Name="FollowNo" />
+    </Key>
+    <Property Name="FollowNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="FollowedNo" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Follow_User" FromRole="Follow" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Hw_MyPetsModel.FK_Follow_User1" FromRole="Follow" ToRole="User" />
+  </EntityType>
+  <EntityType Name="FormDetail">
+    <Key>
+      <PropertyRef Name="DetailNo" />
+    </Key>
+    <Property Name="DetailNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <Property Name="AdmNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Adm" Relationship="Hw_MyPetsModel.FK_FormDetail_Adm" FromRole="FormDetail" ToRole="Adm" />
+    <NavigationProperty Name="From" Relationship="Hw_MyPetsModel.FK_FormDetail_From" FromRole="FormDetail" ToRole="From" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_FormDetail_User" FromRole="FormDetail" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Freeze">
+    <Key>
+      <PropertyRef Name="FreezeNo" />
+    </Key>
+    <Property Name="FreezeNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="StartDays" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDays" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdmNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Adm" Relationship="Hw_MyPetsModel.FK_Freeze_Adm" FromRole="Freeze" ToRole="Adm" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Freeze_User" FromRole="Freeze" ToRole="User" />
+  </EntityType>
+  <EntityType Name="From">
+    <Key>
+      <PropertyRef Name="FromNo" />
+    </Key>
+    <Property Name="FromNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ProblemNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FormDetail" Relationship="Hw_MyPetsModel.FK_FormDetail_From" FromRole="From" ToRole="FormDetail" />
+    <NavigationProperty Name="Problem" Relationship="Hw_MyPetsModel.FK_From_Problem" FromRole="From" ToRole="Problem" />
+  </EntityType>
+  <EntityType Name="Introduction">
+    <Key>
+      <PropertyRef Name="IntroductionNo" />
+    </Key>
+    <Property Name="IntroductionNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="AdmNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adm" Relationship="Hw_MyPetsModel.FK_Introduction_Adm" FromRole="Introduction" ToRole="Adm" />
+  </EntityType>
+  <EntityType Name="Knowledge">
+    <Key>
+      <PropertyRef Name="KnowledgeNo" />
+    </Key>
+    <Property Name="KnowledgeNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="AdmNo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adm" Relationship="Hw_MyPetsModel.FK_Knowledge_Adm" FromRole="Knowledge" ToRole="Adm" />
+  </EntityType>
+  <EntityType Name="Like">
+    <Key>
+      <PropertyRef Name="LikeNo" />
+    </Key>
+    <Property Name="LikeNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserNo" Type="Int32" />
+    <Property Name="PostNo" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="Hw_MyPetsModel.FK_Like_Post" FromRole="Like" ToRole="Post" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Like_User" FromRole="Like" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Lost">
+    <Key>
+      <PropertyRef Name="LostNo" />
+    </Key>
+    <Property Name="LostNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SpeciesNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="GenderNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="SizeNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Place" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChipNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="CityNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="City" Relationship="Hw_MyPetsModel.FK_Lost_City" FromRole="Lost" ToRole="City" />
+    <NavigationProperty Name="PetGender" Relationship="Hw_MyPetsModel.FK_Lost_PetGender" FromRole="Lost" ToRole="PetGender" />
+    <NavigationProperty Name="PetSize" Relationship="Hw_MyPetsModel.FK_Lost_PetSize" FromRole="Lost" ToRole="PetSize" />
+    <NavigationProperty Name="Species" Relationship="Hw_MyPetsModel.FK_Lost_Species" FromRole="Lost" ToRole="Species" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Lost_User" FromRole="Lost" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MessageNo" />
+    </Key>
+    <Property Name="MessageNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostNo" Type="Int32" Nullable="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="Hw_MyPetsModel.FK_Message_Post" FromRole="Message" ToRole="Post" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Message_User" FromRole="Message" ToRole="User" />
+    <NavigationProperty Name="MsgReport" Relationship="Hw_MyPetsModel.FK_MsgReport_Message" FromRole="Message" ToRole="MsgReport" />
+  </EntityType>
+  <EntityType Name="MsgReport">
+    <Key>
+      <PropertyRef Name="MsgReportNo" />
+    </Key>
+    <Property Name="MsgReportNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageNo" Type="Int32" Nullable="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reason" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Message" Relationship="Hw_MyPetsModel.FK_MsgReport_Message" FromRole="MsgReport" ToRole="Message" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_MsgReport_User" FromRole="MsgReport" ToRole="User" />
+  </EntityType>
+  <EntityType Name="PetGender">
+    <Key>
+      <PropertyRef Name="GenderNo" />
+    </Key>
+    <Property Name="GenderNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adopt" Relationship="Hw_MyPetsModel.FK_Adopt_PetGender" FromRole="PetGender" ToRole="Adopt" />
+    <NavigationProperty Name="Lost" Relationship="Hw_MyPetsModel.FK_Lost_PetGender" FromRole="PetGender" ToRole="Lost" />
+  </EntityType>
+  <EntityType Name="PetSize">
+    <Key>
+      <PropertyRef Name="SizeNo" />
+    </Key>
+    <Property Name="SizeNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Size" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adopt" Relationship="Hw_MyPetsModel.FK_Adopt_PetSize" FromRole="PetSize" ToRole="Adopt" />
+    <NavigationProperty Name="Lost" Relationship="Hw_MyPetsModel.FK_Lost_PetSize" FromRole="PetSize" ToRole="Lost" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="PhotoNo" />
+    </Key>
+    <Property Name="PhotoNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostNo" Type="Int32" Nullable="false" />
+    <Property Name="Photo1" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="Hw_MyPetsModel.FK_Photo_Post" FromRole="Photo" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="PostNo" />
+    </Key>
+    <Property Name="PostNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PostTypeNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Like" Relationship="Hw_MyPetsModel.FK_Like_Post" FromRole="Post" ToRole="Like" />
+    <NavigationProperty Name="Message" Relationship="Hw_MyPetsModel.FK_Message_Post" FromRole="Post" ToRole="Message" />
+    <NavigationProperty Name="Photo" Relationship="Hw_MyPetsModel.FK_Photo_Post" FromRole="Post" ToRole="Photo" />
+    <NavigationProperty Name="PostState" Relationship="Hw_MyPetsModel.FK_Post_PostState" FromRole="Post" ToRole="PostState" />
+    <NavigationProperty Name="PostType" Relationship="Hw_MyPetsModel.FK_Post_PostType" FromRole="Post" ToRole="PostType" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Post_User" FromRole="Post" ToRole="User" />
+    <NavigationProperty Name="Report" Relationship="Hw_MyPetsModel.FK_Report_Post" FromRole="Post" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="PostState">
+    <Key>
+      <PropertyRef Name="StateNo" />
+    </Key>
+    <Property Name="StateNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="StateName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Post" Relationship="Hw_MyPetsModel.FK_Post_PostState" FromRole="PostState" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="PostType">
+    <Key>
+      <PropertyRef Name="PostTypeNo" />
+    </Key>
+    <Property Name="PostTypeNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PostType1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Post" Relationship="Hw_MyPetsModel.FK_Post_PostType" FromRole="PostType" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="Problem">
+    <Key>
+      <PropertyRef Name="ProblemNo" />
+    </Key>
+    <Property Name="ProblemNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ProblemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="From" Relationship="Hw_MyPetsModel.FK_From_Problem" FromRole="Problem" ToRole="From" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="ReportNo" />
+    </Key>
+    <Property Name="ReportNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostNo" Type="Int32" Nullable="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reason" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="Hw_MyPetsModel.FK_Report_Post" FromRole="Report" ToRole="Post" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_Report_User" FromRole="Report" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ResetUserPwd">
+    <Key>
+      <PropertyRef Name="ResetNo" />
+    </Key>
+    <Property Name="ResetNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="Guid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Hw_MyPetsModel.FK_ResetUserPwd_User" FromRole="ResetUserPwd" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Species">
+    <Key>
+      <PropertyRef Name="SpeciesNo" />
+    </Key>
+    <Property Name="SpeciesNo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="SpeciesName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adopt" Relationship="Hw_MyPetsModel.FK_Adopt_Species" FromRole="Species" ToRole="Adopt" />
+    <NavigationProperty Name="Lost" Relationship="Hw_MyPetsModel.FK_Lost_Species" FromRole="Species" ToRole="Lost" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserNo" />
+    </Key>
+    <Property Name="UserNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="UserPwd" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="EMail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Herder" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Boolean" />
+    <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ImageMimeType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="AboutMe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adopt" Relationship="Hw_MyPetsModel.FK_Adopt_User" FromRole="User" ToRole="Adopt" />
+    <NavigationProperty Name="Black" Relationship="Hw_MyPetsModel.FK_Black_User" FromRole="User" ToRole="Black" />
+    <NavigationProperty Name="Black1" Relationship="Hw_MyPetsModel.FK_Black_User1" FromRole="User" ToRole="Black" />
+    <NavigationProperty Name="Follow" Relationship="Hw_MyPetsModel.FK_Follow_User" FromRole="User" ToRole="Follow" />
+    <NavigationProperty Name="Follow1" Relationship="Hw_MyPetsModel.FK_Follow_User1" FromRole="User" ToRole="Follow" />
+    <NavigationProperty Name="FormDetail" Relationship="Hw_MyPetsModel.FK_FormDetail_User" FromRole="User" ToRole="FormDetail" />
+    <NavigationProperty Name="Freeze" Relationship="Hw_MyPetsModel.FK_Freeze_User" FromRole="User" ToRole="Freeze" />
+    <NavigationProperty Name="Like" Relationship="Hw_MyPetsModel.FK_Like_User" FromRole="User" ToRole="Like" />
+    <NavigationProperty Name="Lost" Relationship="Hw_MyPetsModel.FK_Lost_User" FromRole="User" ToRole="Lost" />
+    <NavigationProperty Name="Message" Relationship="Hw_MyPetsModel.FK_Message_User" FromRole="User" ToRole="Message" />
+    <NavigationProperty Name="MsgReport" Relationship="Hw_MyPetsModel.FK_MsgReport_User" FromRole="User" ToRole="MsgReport" />
+    <NavigationProperty Name="Post" Relationship="Hw_MyPetsModel.FK_Post_User" FromRole="User" ToRole="Post" />
+    <NavigationProperty Name="Report" Relationship="Hw_MyPetsModel.FK_Report_User" FromRole="User" ToRole="Report" />
+    <NavigationProperty Name="ResetUserPwd" Relationship="Hw_MyPetsModel.FK_ResetUserPwd_User" FromRole="User" ToRole="ResetUserPwd" />
+  </EntityType>
+  <Association Name="FK_Activity_Adm">
+    <End Type="Hw_MyPetsModel.Adm" Role="Adm" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Activity" Role="Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDetail_Adm">
+    <End Type="Hw_MyPetsModel.Adm" Role="Adm" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.FormDetail" Role="FormDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="FormDetail">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Freeze_Adm">
+    <End Type="Hw_MyPetsModel.Adm" Role="Adm" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Freeze" Role="Freeze" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="Freeze">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Introduction_Adm">
+    <End Type="Hw_MyPetsModel.Adm" Role="Adm" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Introduction" Role="Introduction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="Introduction">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Knowledge_Adm">
+    <End Type="Hw_MyPetsModel.Adm" Role="Adm" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Knowledge" Role="Knowledge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adm">
+        <PropertyRef Name="AdmNo" />
+      </Principal>
+      <Dependent Role="Knowledge">
+        <PropertyRef Name="AdmNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_City">
+    <End Type="Hw_MyPetsModel.City" Role="City" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Adopt" Role="Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="CityNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_PetGender">
+    <End Type="Hw_MyPetsModel.PetGender" Role="PetGender" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Adopt" Role="Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetGender">
+        <PropertyRef Name="GenderNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="GenderNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_PetSize">
+    <End Type="Hw_MyPetsModel.PetSize" Role="PetSize" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Adopt" Role="Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetSize">
+        <PropertyRef Name="SizeNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="SizeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_Species">
+    <End Type="Hw_MyPetsModel.Species" Role="Species" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Adopt" Role="Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="SpeciesNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="SpeciesNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Adopt_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Adopt" Role="Adopt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Adopt">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Black_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Black" Role="Black" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Black">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Black_User1">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Black" Role="Black" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Black">
+        <PropertyRef Name="BlackedNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_City">
+    <End Type="Hw_MyPetsModel.City" Role="City" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Lost" Role="Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="CityNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Follow_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Follow" Role="Follow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Follow">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Follow_User1">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Follow" Role="Follow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Follow">
+        <PropertyRef Name="FollowedNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDetail_From">
+    <End Type="Hw_MyPetsModel.From" Role="From" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.FormDetail" Role="FormDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="From">
+        <PropertyRef Name="FromNo" />
+      </Principal>
+      <Dependent Role="FormDetail">
+        <PropertyRef Name="FormNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FormDetail_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.FormDetail" Role="FormDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="FormDetail">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Freeze_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Freeze" Role="Freeze" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Freeze">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_From_Problem">
+    <End Type="Hw_MyPetsModel.Problem" Role="Problem" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.From" Role="From" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Problem">
+        <PropertyRef Name="ProblemNo" />
+      </Principal>
+      <Dependent Role="From">
+        <PropertyRef Name="ProblemNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Like_Post">
+    <End Type="Hw_MyPetsModel.Post" Role="Post" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Like" Role="Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostNo" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="PostNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Like_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Hw_MyPetsModel.Like" Role="Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_PetGender">
+    <End Type="Hw_MyPetsModel.PetGender" Role="PetGender" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Lost" Role="Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetGender">
+        <PropertyRef Name="GenderNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="GenderNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_PetSize">
+    <End Type="Hw_MyPetsModel.PetSize" Role="PetSize" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Lost" Role="Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetSize">
+        <PropertyRef Name="SizeNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="SizeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_Species">
+    <End Type="Hw_MyPetsModel.Species" Role="Species" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Lost" Role="Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="SpeciesNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="SpeciesNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lost_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Lost" Role="Lost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Lost">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Post">
+    <End Type="Hw_MyPetsModel.Post" Role="Post" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostNo" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="PostNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MsgReport_Message">
+    <End Type="Hw_MyPetsModel.Message" Role="Message" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.MsgReport" Role="MsgReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="MessageNo" />
+      </Principal>
+      <Dependent Role="MsgReport">
+        <PropertyRef Name="MessageNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MsgReport_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.MsgReport" Role="MsgReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="MsgReport">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Photo_Post">
+    <End Type="Hw_MyPetsModel.Post" Role="Post" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Photo" Role="Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostNo" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="PostNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_PostState">
+    <End Type="Hw_MyPetsModel.PostState" Role="PostState" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Post" Role="Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostState">
+        <PropertyRef Name="StateNo" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_PostType">
+    <End Type="Hw_MyPetsModel.PostType" Role="PostType" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Post" Role="Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostType">
+        <PropertyRef Name="PostTypeNo" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="PostTypeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Post_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Post" Role="Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Report_Post">
+    <End Type="Hw_MyPetsModel.Post" Role="Post" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Report" Role="Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostNo" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="PostNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Report_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.Report" Role="Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResetUserPwd_User">
+    <End Type="Hw_MyPetsModel.User" Role="User" Multiplicity="1" />
+    <End Type="Hw_MyPetsModel.ResetUserPwd" Role="ResetUserPwd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserNo" />
+      </Principal>
+      <Dependent Role="ResetUserPwd">
+        <PropertyRef Name="UserNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

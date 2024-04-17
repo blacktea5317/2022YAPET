@@ -1,0 +1,65 @@
+﻿@model IEnumerable<YAPET.Models.From>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+<h2>意見表單</h2>
+
+<table class="table" id="FromTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Problem.ProblemName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Problem.ProblemName)
+                </td>
+                <td>
+                    @Html.ActionLink("詳細資料", "Details", new { id = item.FromNo, page = p }, new { @class = "btn btn-outline-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script>
+        $('pagination>li').addClass('page-item');
+        $('pagination>li>a').addClass('page-link');
+
+        let table = $('#FromTable').DataTable(Tableconfig);
+
+    </script>
+}

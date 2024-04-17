@@ -1,0 +1,141 @@
+﻿@model IEnumerable<YAPET.Models.Adopt>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+<h2 class="mt-4">領養寵物管理</h2>
+
+@*<p class="text-right">
+    @Html.ActionLink("新增活動", "Create", new { page = p }, new { @class = "btn btn-primary" })
+</p>*@
+<table class="table" id="AdoptTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LigationState)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ContactPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChipNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City.CityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetGender.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetSize.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Species.SpeciesName)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Action("GetImage",new { id = item.AdoptNo })" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LigationState)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPerson)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChipNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.CityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetGender.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetSize.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Species.SpeciesName)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserId)
+                </td>
+                <td>
+                    @* @Html.ActionLink("Edit", "Edit", new { id = item.AdoptNo }) |*@
+                    @Html.ActionLink("詳細資料", "Details", new { id = item.AdoptNo, page = p }, new { @class = "btn btn-outline-primary" })
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.AdoptNo })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script>
+        $('pagination>li').addClass('page-item');
+        $('pagination>li>a').addClass('page-link');
+
+        let table = $('#AdoptTable').DataTable(Tableconfig);
+
+    </script>
+}

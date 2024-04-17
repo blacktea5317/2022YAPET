@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "註冊成功";
+}
+
+
+<section class="py-5">
+    <div class="container px-3">
+        <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+            <div class="text-center mb-5">
+                <h1 class="fw-bolder mb-5">註冊成功！</h1>
+                <p class="lead fw-normal text-muted mb-0"><span id="time"></span>秒後自動前往登入頁</p>
+            </div>
+
+            <div class="text-center">
+                @Html.ActionLink("立即前往", "Login", "Login", null, new { @class = "btn btn-primary btn-lg px-4 mt-3" })
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts{
+    <script>
+        var s = 5;
+        test();
+        function test() {
+            $("#time").html(s)
+            setTimeout("test()", 1000);
+            s -= 1
+            if (s <= 0) {
+                document.location.href = "/Login/Login"
+            }
+        }
+
+    </script>
+}
+

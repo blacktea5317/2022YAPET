@@ -1,0 +1,109 @@
+﻿@model YAPET.Models.MsgReport
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+
+<h2 class="mt-4 mb-4">留言檢舉資料</h2>
+
+<div class="card border-info ">
+    <div class="card-header bg-info text-white"><h3>留言檢舉詳細資料</h3></div>
+
+    <dl class="card-body row">
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Message.Content)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Message.Content)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.User.UserId)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.User.UserId)
+        </dd>
+
+    </dl>
+</div>
+<div class="card-footer text-right">
+    @Html.ActionLink("回上一頁", "Index", new { id = Model.MsgReportNo, page = p }, new { @class = "btn btn-success" })
+    <input id="btnSetFreeze" type="button" value="確認封鎖" class="btn btn-danger" />
+    @Html.ActionLink("刪除", "Delete", new { id = Model.MsgReportNo, page = p }, new { @class = "btn btn-success" })
+
+</div>
+
+
+<form id="sendFreeze" method="post" action="/Adm/MsgReports/Edit">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">確認封鎖</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" value="@Model.UserNo" name="userNo" />
+                    <input type="hidden" value="@Model.MessageNo" name="msgid" />
+                    <input type="hidden" value="@Model.MsgReportNo" name="id" />
+                    <p>封鎖天數</p><input type="text" name="days" class="form-control" />
+                    <hr />
+                    <p>封鎖原因</p><input type="text" name="reason" class="form-control" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-danger">確認封鎖</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section scripts{
+    <script>
+        $("#btnSetFreeze").on("click", () => {
+
+            $("#exampleModalLong").modal("show")
+
+        })
+
+        $("#btnsend").on("click", () => {
+            $("#sendFreeze").submit()
+        })
+    </script>
+}

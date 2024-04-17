@@ -1,0 +1,147 @@
+﻿@model IEnumerable<YAPET.Models.Lost>
+
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "走失寵物管理列表";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+<h2 class="mt-4">走失管理</h2>
+
+@*<p class="text-right">
+    @Html.ActionLink("新增走失寵物", "Create", new { page = p }, new { @class = "btn btn-primary" })
+</p>*@
+
+<table class="table" id="LostTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChipNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City.CityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetGender.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetSize.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Species.SpeciesName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserId)
+            </th>*@
+            <th>詳細資料</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Action("GetImage",new { id = item.LostNo })" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPerson)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChipNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.CityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetGender.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetSize.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Species.SpeciesName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserId)
+                </td>*@
+                <td>
+                  @*  @Html.ActionLink("修改", "Edit", new { id = item.LostNo }) |*@
+                    @Html.ActionLink("詳細資料", "Details", new { id = item.LostNo, page = p }, new { @class = "btn btn-outline-primary" })
+                  @*  @Html.ActionLink("刪除", "Delete", new { id = item.LostNo })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@*<footer>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+</footer>*@
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script>
+        $('pagination>li').addClass('page-item');
+        $('pagination>li>a').addClass('page-link');
+
+        let table = $('#LostTable').DataTable(Tableconfig);
+
+    </script>
+}

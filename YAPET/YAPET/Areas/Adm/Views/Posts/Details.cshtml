@@ -1,0 +1,135 @@
+﻿@model YAPET.Models.VMBlog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+
+}
+
+
+<div class="container pt-5">
+    <div>
+        @foreach (var item in Model.photolist)
+        {
+            <img src="@Url.Action("GetImage","Posts",new { id=item.PhotoNo})" style="width:30%" />
+        }
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.post.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post.PostState.StateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post.PostState.StateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.post.PostType.PostType1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.post.PostType.PostType1)
+        </dd>
+
+        <dt>
+            發文人
+        </dt>
+
+        <dd>
+            @if (Model.post.User.Nickname != null)
+            {
+                <p>@Html.DisplayFor(model => model.post.User.Nickname)</p>
+            }
+            else
+            {
+                <p>@Html.DisplayFor(model => model.post.User.UserId)</p>
+            }
+        </dd>
+
+    </dl>
+    <p class="text-right">
+     
+       @Html.ActionLink("刪除", "Delete", new { id = Model.post.PostNo }, new { onclick = "return confirm('你確定要刪除嗎？')" }) |
+        @Html.ActionLink("回貼文首頁", "IndexAll")
+    </p>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>留言</h3>
+        </div>
+        <div id="divcontent" class="card-body p-5">
+            @foreach (var item in Model.messagelist)
+            {
+                if (item.UserNo == user)
+                {
+                    @Html.ActionLink("刪除", "DeleteMessage", new { id = item.MessageNo }, new { onclick = "return confirm('你確定要刪除嗎？')", @class = "float-right btn btn-outline-secondary" })
+                }
+              
+
+                if (@item.uNickname != null)
+                {
+                    <p>@Html.DisplayFor(modelItem => item.uNickname)</p>
+                }
+                else
+                {
+                    <p>@Html.DisplayFor(modelItem => item.uId)</p>
+                }
+                <p>@Html.DisplayFor(modelItem => item.Content)</p>
+                <p>@Html.DisplayFor(modelItem => item.Date)</p>
+                <hr />
+            }
+        </div>
+        @if (user != 0)
+        {
+            <form>
+                <div class="px-5 pb-5">
+                    <textarea id="content" rows="2" cols="20" class="form-control mb-2"></textarea>
+                    <input id="msg" type="button" value="留言" class="btn btn-primary" />
+
+                </div>
+            </form>
+        }
+        else
+        {
+            <div class="px-5 pb-5">
+                <p>登入後留言</p>
+                @Html.ActionLink("登入", "Login", "Login", null, new { @class = "btn btn-primary" })
+            </div>
+        }
+
+    </div>
+
+</div>
+
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

@@ -1,0 +1,31 @@
+﻿@model YAPET.Models.Knowledge
+
+@{
+    ViewBag.Title = "知識小學堂";
+}
+
+<div class="container my-5">
+    <div class="card border-success">
+        <div class="card-header bg-success">
+            <h3 class="text-center text-white mb-0">@Html.DisplayFor(model => model.Title)</h3>
+        </div>
+        <div class="row no-gutters card-body">
+            <div class="col-12">
+                <p class="text-right">更新日期： @Html.DisplayFor(model => model.Date)</p>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <img src="@Url.Action("GetImage","GetImage",new { id=Model.KnowledgeNo,tableName="Knowledge"})" style="width:100%" />
+            </div>
+            <div class="col-md-8 pl-5">
+                <p>
+                    @Html.Raw(Model.Content.Replace("\n", "<br>"))
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <p class="text-right">
+        @Html.ActionLink("回小學堂列表", "KnowledgeIndex")
+    </p>
+</div>

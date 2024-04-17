@@ -1,0 +1,108 @@
+﻿@model IEnumerable<YAPET.Models.AdoptData>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "公立領養";
+}
+
+<div class="container my-5">
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-4">
+        <div class="text-center">
+            <h1 class="fw-bolder mb-3">公立領養</h1>
+        </div>
+    </div>
+
+    <div class="navbar mb-4">
+        <div class="mr-auto"></div>
+        @using (Html.BeginForm(Html.BeginForm("Index", "AdoptData", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" })))
+        {
+            @Html.TextBox("search", "", new { @class = "form-control mr-sm-2" })
+            <button type="submit" class="fa fa-search btn btn-primary my-2 my-sm-0"> 搜尋</button>
+        }
+    </div>
+
+    <div class="row" style="display: flex; flex-wrap: wrap">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6 " style="display:flex; flex-direction:column;">
+                <div class="card mb-4 h-100">
+                    <h2 class="card-title text-center mb-0 mt-2"><strong>@Html.DisplayFor(modelItem => item.animal_kind)</strong></h2>
+                    <div class="p-3">
+                        <img src="@Html.DisplayFor(modelItem => item.album_file)" class="img-thumbnail" style="width: 100%; height: 400px; object-fit: cover;" />
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-6 mb-3">
+                                @if (item.animal_sex == "F")
+                                {
+                                    <button class="btn btn-info btn-block">
+                                        @Html.Encode("公")
+                                    </button>
+                                }
+                                else if (item.animal_sex == "M")
+                                {
+                                    <button class="btn btn-danger btn-block">
+                                        @Html.Encode("母")
+                                    </button>
+                                }
+                            </div>
+                            <div class="col-6 mb-3">
+                                <button class="btn btn-outline-dark btn-block">
+                                    @if (item.animal_bodytype == "BIG")
+                                    {
+                                        @Html.Encode("大型")
+                                    }
+                                    else if (item.animal_bodytype == "MEDIUM")
+                                    {
+                                        @Html.Encode("中型")
+                                    }
+                                    else if (item.animal_bodytype == "SMALL")
+                                    {
+                                        @Html.Encode("小型")
+                                    }
+                                </button>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <button class="btn btn-outline-success btn-block">
+                                    @Html.DisplayFor(modelItem => item.animal_colour)
+                                </button>
+                            </div>
+                            <div class="col-6 mb-3">
+                                @if (item.animal_sterilization == "T")
+                                {
+                                    <button class="btn btn-secondary btn-block">
+                                        @Html.Encode("已結紮")
+                                    </button>
+                                }
+                                @if (item.animal_sterilization == "F")
+                                {
+                                    <button class="btn btn-outline-secondary btn-block">
+                                        @Html.Encode("未結紮")
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                        <p class="fa fa-home card-text"> 所在地：@Html.DisplayFor(modelItem => item.animal_place)</p>
+                        <p class="fa fa-map-marker card-text"> 地址：@Html.DisplayFor(modelItem => item.shelter_address)</p>
+                        <p class="fa fa-phone card-text"> 連絡電話：@Html.DisplayFor(modelItem => item.shelter_tel)</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <p class="text-muted text-right mt-5">更新時間：@Html.DisplayFor(modelItem => item.cDate)</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="mt-4">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $('.pagination>li').addClass('page-item');
+        $('.pagination>li>a').addClass('page-link');
+        $('.pagination').addClass('justify-content-center');
+    </script>
+}

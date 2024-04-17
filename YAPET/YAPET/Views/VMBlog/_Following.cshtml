@@ -1,0 +1,12 @@
+﻿@model IEnumerable<YAPET.Models.Follow>
+
+@foreach (var item in Model)
+{
+    <div>
+        <a href="@Url.Action("UserBlog", "VMBlog", new { id = item.FollowedNo })">
+            <img src="@Url.Action("GetImage", "GetImage", new { id =item.FollowedNo, tableName = "User" })" style="width: 50px; height: 50px; object-fit: cover;" onerror="javascript:this.src='https://miro.medium.com/max/1400/1*Y4EDX48LsTKGzhr9EyTPKA.png';this.onerror = null" />
+            <span>@item.User1.Name (@Html.DisplayFor(model => item.User1.UserId))</span>
+            <hr />
+        </a>
+    </div>
+}

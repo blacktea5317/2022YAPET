@@ -1,0 +1,151 @@
+﻿@model YAPET.Models.Adopt
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+
+
+
+<h3 class="text-danger mt-4 mb-4">確定要刪除領養資料?</h3>
+<div class="card border-info">
+    <div class="card-header bg-info text-white"><h3>領養詳細資料</h3></div>
+
+    <dl class="card-body row">
+        <dd class="col-12">
+            <img src="@Url.Action("GetImage",new { id=Model.AdoptNo})" width="400" />
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.LigationState)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.LigationState)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.ContactPerson)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.ContactPerson)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Contact)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.ChipNumber)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.ChipNumber)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.City.CityName)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.City.CityName)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.PetGender.Gender)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.PetGender.Gender)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.PetSize.Size)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.PetSize.Size)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.Species.SpeciesName)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.Species.SpeciesName)
+        </dd>
+
+        <dt class="col-3">
+            @Html.DisplayNameFor(model => model.User.UserId)
+        </dt>
+
+        <dd class="col-3">
+            @Html.DisplayFor(model => model.User.UserId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card-footer text-right">
+            <input type="submit" value="刪除" class="btn btn-outline-danger btn-lg" />
+            @Html.ActionLink("返回", "Index", new { page = p }, new { @class = "btn btn-outline-success btn-lg" })
+        </div>
+    }
+</div>

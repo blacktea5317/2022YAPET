@@ -1,0 +1,65 @@
+﻿@model IEnumerable<YAPET.Models.FormDetail>
+
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "意見表單明細管理列表";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout-Adm.cshtml";
+    var p = Request.QueryString["page"];
+}
+
+<h2 class="mt-4">意見表單明細管理</h2>
+
+<p class="text-right">
+    @Html.ActionLink("新增", "Create", new { page = p }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adm.AdmId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From.ProblemNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserId)
+        </th>
+        <th>詳細資料</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adm.AdmId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.From.ProblemNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserId)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.DetailNo }) |
+                @Html.ActionLink("詳細資料", "Details", new { id = item.DetailNo, page = p }) |
+                @Html.ActionLink("刪除", "Delete", new { id = item.DetailNo })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+@section scripts{
+    <script>
+        $('.pagination>li').addClass('page-item');
+        $('.pagination>li>a').addClass('page-link');
+        $('.pagination-container>ul').addClass(' justify-content-center');
+    </script>
+}

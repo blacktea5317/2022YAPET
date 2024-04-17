@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "首頁";
+}
+
+<main class="flex-shrink-0">
+    <!-- Header-->
+    <header style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../images/image_6_1.jpg'); background-size: cover; ">
+        <div class="container py-5">
+            <div class="row gx-5 align-items-center justify-content-center my-5">
+                <div class="col-lg-8 col-xl-7 col-xxl-6 py-5">
+                    <div class="my-5 text-center text-xl-start">
+                        <h1 class="display-5 fw-bolder text-white mt-5 mb-3"><strong>YAPET 寵物領養平台</strong></h1>
+                        <p class="lead fw-normal text-white mb-5">全台寵物種類最多的網站！</p>
+                        <div class="my-5">
+                            @Html.ActionLink("馬上領養", "Index", "Adopts", null, new { @class = "btn btn-primary btn-lg px-4 me-sm-3" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Features section-->
+    <section class="py-5" id="features">
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-lg-3 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">YAPET · 養PET</h2></div>
+                <div class="col-lg-9">
+                    <div class="row gx-5 row-cols-1 row-cols-md-2">
+                        <div class="col mb-5 h-100">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                            <h2 class="h5">寵物領養</h2>
+                            <p class="mb-0">
+                                您家的寵物生太多養不起？
+                                路上又撿到了小可憐無力負擔？
+                                或是想要幫忙一個可愛無助的小角色？
+                                來YAPET就對了！
+                            </p>
+                        </div>
+                        <div class="col mb-5 h-100">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                            <h2 class="h5">走失協尋</h2>
+                            <p class="mb-0">
+                                如果您的寵物不幸走失，
+                                除了貼海報、求土地公，
+                                您還可以試試看YAPET，
+                                給您最即時的幫助。
+                            </p>
+                        </div>
+                        <div class="col mb-5 mb-md-0 h-100">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                            <h2 class="h5">貼文分享</h2>
+                            <p class="mb-0">
+                                來來來～
+                                專屬功能只有YAPET有，
+                                分享喜歡的寵物代替自拍，
+                                單身看不慣人類的狗糧來這裡吃真狗糧，
+                                沒有你不ＰＯ只有你沒看過的貼文，
+                                應有盡有唷～～～
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial section-->
+    <div class="py-5 bg-light">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-10 col-xl-7">
+                    <div class="text-center">
+                        <div class="fs-4 mb-4 fst-italic">
+                            為什麼會有 YAPET ？<br />
+                            <strong>「整合平台愛護多元動物」</strong><br />
+                            <p>
+                                YAPET 是由五個熱愛動物熱愛程式一群人的經營，在一個職前訓練的課程所結緣，歷經了討論、無數的熬夜所創造的平台，<br />冀望能藉由這個平台讓多元的寵物得到照顧。
+                            </p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            YAPET團隊
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog preview section-->
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bolder">最新寵物貼文</h2>
+                        <p class="lead fw-normal text-muted">分享寵物大小事！</p>
+                        @Html.ActionLink("前往貼文首頁", "Index", "VMBlog", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+            @Html.Action("_NewPost", "VMBlog")
+        </div>
+    </section>
+</main>

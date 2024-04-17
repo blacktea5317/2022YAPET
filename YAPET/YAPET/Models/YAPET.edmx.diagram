@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe36e642de214330b3186e0f76c604af" Name="Diagram1">
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Activity" Width="1.5" PointX="8" PointY="11.125" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Adm" Width="1.5" PointX="5.75" PointY="8" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Adopt" Width="1.5" PointX="6" PointY="19.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Black" Width="1.5" PointX="3" PointY="27.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.City" Width="1.5" PointX="3.75" PointY="33.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Follow" Width="1.5" PointX="3" PointY="53.5" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.FormDetail" Width="1.5" PointX="3" PointY="21" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Freeze" Width="1.5" PointX="8" PointY="15.875" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.From" Width="1.5" PointX="0.75" PointY="26.125" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Introduction" Width="1.5" PointX="8" PointY="4.75" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Knowledge" Width="1.5" PointX="8" PointY="7.875" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Like" Width="1.5" PointX="5.25" PointY="15.75" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Lost" Width="1.5" PointX="6" PointY="25.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Message" Width="1.5" PointX="8.25" PointY="19.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.MsgReport" Width="1.5" PointX="10.5" PointY="21" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.PetGender" Width="1.5" PointX="3.75" PointY="24.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.PetSize" Width="1.5" PointX="3.75" PointY="31.125" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Photo" Width="1.5" PointX="5.25" PointY="12.25" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Post" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.PostState" Width="1.5" PointX="0.75" PointY="16.375" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.PostType" Width="1.5" PointX="0.75" PointY="13.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Problem" Width="1.5" PointX="1.5" PointY="30.5" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Report" Width="1.5" PointX="8.25" PointY="23.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.ResetUserPwd" Width="1.5" PointX="3" PointY="50.625" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.Species" Width="1.5" PointX="3.75" PointY="36.125" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Hw_MyPetsModel.User" Width="1.5" PointX="0.75" PointY="19.125" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Activity_Adm" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_FormDetail_Adm" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Freeze_Adm" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Introduction_Adm" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Knowledge_Adm" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Adopt_City" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Adopt_PetGender" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Adopt_PetSize" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Adopt_Species" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Adopt_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Black_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Black_User1" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Lost_City" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Follow_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Follow_User1" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_FormDetail_From" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_FormDetail_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Freeze_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_From_Problem" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Like_Post" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Like_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Lost_PetGender" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Lost_PetSize" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Lost_Species" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Lost_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Message_Post" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Message_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_MsgReport_Message" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_MsgReport_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Photo_Post" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Post_PostState" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Post_PostType" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Post_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Report_Post" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_Report_User" />
+        <AssociationConnector Association="Hw_MyPetsModel.FK_ResetUserPwd_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

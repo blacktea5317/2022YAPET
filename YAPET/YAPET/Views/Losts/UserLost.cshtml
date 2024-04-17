@@ -1,0 +1,108 @@
+﻿@model IEnumerable<YAPET.Models.Lost>
+
+@{
+    ViewBag.Title = "我的走失協尋";
+}
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+<div class="container my-5">
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+        <div class="text-center">
+            <h1 class="fw-bolder">我的走失協尋</h1>
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink(" 新增走失資料", "Create", new { @class = "btn btn-outline-primary fa fa-plus" })
+    </p>
+    <table class="table" id="LostTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Photo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Place)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City.CityName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PetGender.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PetSize.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Species.SpeciesName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Action("GetImage","GetImage",new { id=item.LostNo, tableName = "Lost"})" style="width: 200px; height: 200px; object-fit: cover; " />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Place)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date, "DateTimeTemplate")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City.CityName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PetGender.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PetSize.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Species.SpeciesName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("詳細", "Details", new { id = item.LostNo }) |
+                        @Html.ActionLink("刪除", "Delete", new { id = item.LostNo }, new { onclick = "return confirm('你確定要刪除嗎？')" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        @Html.ActionLink("返回個人資料", "Details", "User")
+    </p>
+</div>
+
+@section scripts {
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTable/Chinese traditional.js"></script>
+    <script>
+        let table = $('#LostTable').DataTable(Tableconfig);
+    </script>
+}

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<YAPET.Models.Lost>
+
+<div class="card">
+    <span class="fa fa-user-circle btn btn-dark"> 我的走失刊登</span>
+    <div class="row no-gutters card-body">
+
+        <p>
+            @Html.ActionLink(" 新增資料", "Create", null, new { @class = "btn btn-outline-primary fa fa-plus" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Photo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th class="d-none d-md-block">
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Action("GetImage","GetImage",new { id=item.LostNo, tableName = "Lost"})" style="width: 100px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="d-none d-md-block">
+                        @Html.DisplayFor(modelItem => item.Time, "DateTimeTemplate")
+                    </td>
+
+                    <td class="text-right">
+                        @Html.ActionLink("詳細資料", "Details", new { id = item.LostNo })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+    <p class="card-footer text-right mb-0">
+        @Html.ActionLink("觀看所有我的走失刊登", "UserLost", "Losts", null, new { @class = "btn btn-dark" })
+    </p>
+</div>

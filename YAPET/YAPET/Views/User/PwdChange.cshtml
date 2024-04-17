@@ -1,0 +1,57 @@
+﻿@model YAPET.Models.PwdChange
+
+@{
+    ViewBag.Title = "更改密碼";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <section class="py-5">
+        <div class="container px-3">
+            <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+                <div class="text-center mb-5">
+                    <h1 class="fw-bolder">更改密碼</h1>
+                </div>
+                <div class="col-md-6 offset-md-3">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.OldPwd, htmlAttributes: new { @class = "control-label col-lg-2" })
+                        <div class="col-lg-10">
+                            @Html.PasswordFor(model => model.OldPwd, new{ @class = "form-control" } )
+                            @Html.ValidationMessageFor(model => model.OldPwd, "", new { @class = "text-danger" })
+                            <p class="text-danger">@ViewBag.PwdErr</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.NewPwd, htmlAttributes: new { @class = "control-label col-lg-2" })
+                        <div class="col-lg-10">
+                            @Html.PasswordFor(model => model.NewPwd, new{ @class = "form-control" } )
+                            @Html.ValidationMessageFor(model => model.NewPwd, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.ConfirmPwd, htmlAttributes: new { @class = "control-label col-lg-2" })
+                        <div class="col-lg-10">
+                            @Html.PasswordFor(model => model.ConfirmPwd, new{ @class = "form-control" } )
+                            @Html.ValidationMessageFor(model => model.ConfirmPwd, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="更改" class="btn btn-primary btn-lg px-4 mt-3" />
+                        <p class="mb-0 mt-5">
+                            @Html.ActionLink("返回會員管理", "Details")
+                        </p>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
